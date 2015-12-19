@@ -4,7 +4,7 @@
 
 {% block contents %}
 
-
+<!--
 <div class="container">
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -19,6 +19,37 @@
   </nav>
   <br><br><br>
     <h1> Parent Teacher Conflict </h1>
+</div>
+-->
+
+<div id="wrapper">
+  <!--
+  All your content must go here.
+  This wrapper must be relative positioned, unless Simple-Sidebar won't work properly.
+  * Every POSITION-FIXED ELEMENT must be positioned outside of this wrapper.
+  * Every POSITION-ABSOLUTE ELEMENT must be positioned inside a POSITION-RELATIVE div.
+  -->
+</div>
+
+<div id="navbar">
+  <!--
+  #navbar is positioned fixed.
+
+  It does not matter what element #toggle-sidebar is, give it a selector (in this example #toggle-sidebar).
+  -->
+  <span id="toggle-sidebar" class="button icon"></span>
+</div>
+
+<div id="sidebar">
+  <!--
+  Simple-Sidebar will handle #sidebar's position.
+
+  Links below are just an example. Give each clickable element, for example links, a class to trigger the closing animation.
+  -->
+  <a class="close-sidebar" href="#">Link</a>
+  <a class="close-sidebar" href="#">Link</a>
+  <a class="close-sidebar" href="#">Link</a>
+  <a class="close-sidebar" href="#">Link</a>
 </div>
 
 {% endblock %}
