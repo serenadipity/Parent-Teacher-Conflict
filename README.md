@@ -53,7 +53,7 @@ Things We're Using
 - None yet
 
 Changelog
-=========
+---------
 | Timestamp  | Contributor  | Description |
 |:-----------|:------------:|:------------|
 
