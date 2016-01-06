@@ -51,3 +51,9 @@ Things We're Using
 
 ###We Don't Know
 - None yet
+
+Changelog
+---------
+| Timestamp  | Contributor  | Description |
+|:-----------|:------------:|:------------|
+
