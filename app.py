@@ -6,8 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template("home.html")
-    
+    return render_template("home.html")   
 
 @app.route("/parentcreate", methods=['GET', 'POST'])
 def parent_create():
