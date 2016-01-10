@@ -8,16 +8,16 @@ body {
 }
 
 @font-face {
-    font-family: myFirstFont;
+    font-family: chalkboard;
     src: url(rayando.ttf);
     font-weight: bold;
 }
 
-div {
+#title {
     position: fixed;
     top: 50px;
     left: 500px;
-    font-family: myFirstFont;
+    font-family: chalkboard;
     color: white;
 }
 
