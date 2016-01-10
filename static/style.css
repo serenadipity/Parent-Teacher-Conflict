@@ -1,15 +1,31 @@
-/* Style sheet */
+body {
+    background-color: black;
+    background: url(imgs/apple2.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
-/* link to cool sidebar things: 
-http://tympanus.net/Development/SidebarTransitions/
-*/
+@font-face {
+    font-family: myFirstFont;
+    src: url(rayando.ttf);
+    font-weight: bold;
+}
 
-/* another link: http://mmenu.frebsite.nl/ */
+div {
+    position: fixed;
+    top: 50px;
+    left: 500px;
+    font-family: myFirstFont;
+    color: white;
+}
 
-/* good link!+primary one that code is basded on
-http://dcdeiv.github.io/simple-sidebar/ 
- */
+.jumbotron{
+    background-color:transparent; !important;
+}
 
+/*
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -51,8 +67,6 @@ http://dcdeiv.github.io/simple-sidebar/
     position: absolute;
     margin-right: -250px;
 }
-
-/* Sidebar Styles */
 
 .sidebar-nav {
     position: absolute;
@@ -127,3 +141,4 @@ http://dcdeiv.github.io/simple-sidebar/
         margin-right: 0;
     }
 }
+*/
