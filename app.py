@@ -3,10 +3,16 @@ import database_utils
 
 app = Flask(__name__)
 
+
 @app.route("/")
 @app.route("/home")
 def home():
     return render_template("home.html")
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 
 @app.route("/parentcreate", methods=['GET', 'POST'])
@@ -36,7 +42,12 @@ def teacher_create():
         first_name = request.form['first_name']
         last_name = request.form['last_name']
         email = request.form['email'].lower()
-        result = [False]
+        if (email == 'other'):
+            email = request.form['other']
+        school = request.form['school']
+        department = request.form['department']
+        room = request.form['room']
+        result = database_utils.valid_create_teacher(username, password, repeat_password, first_name, last_name, email, school, department, room)
         if result[0]:
             return result[1]
         else:
