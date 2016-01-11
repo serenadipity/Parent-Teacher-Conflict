@@ -33,6 +33,9 @@ body {
     background-color:transparent; !important;
 }
 
+.btn-space {
+    margin-right: 10px;
+}
 
 /*
 #wrapper {
