@@ -214,6 +214,7 @@ def get_teachers(school):
     conn.close()
     return teachers
 
+
 def get_teachers_by_department(school, department):
     conn = sqlite3.connect("data.db")
     c = conn.cursor()
