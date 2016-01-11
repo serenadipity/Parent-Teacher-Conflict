@@ -185,3 +185,45 @@ def get_schools():
     schools = c.execute(q)
     conn.close()
     return schools
+
+
+def get_departments(school):
+    conn = sqlite3.connect("data.db")
+    c = conn.cursor()
+    q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "teacher_database"'
+    c.execute(q)
+    if not c.fetchone():
+        conn.close()
+        return []
+    q = 'SELECT DISTINCT department FROM teacher_database WHERE SCHOOL = ?'
+    departments = c.execute(q, (school))
+    conn.close()
+    return departments
+
+
+def get_teachers(school):
+    conn = sqlite3.connect("data.db")
+    c = conn.cursor()
+    q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "teacher_database"'
+    c.execute(q)
+    if not c.fetchone():
+        conn.close()
+        return []
+    q = 'SELECT last_name, first_name, teacher_id FROM teacher_database WHERE SCHOOL = ?'
+    teachers = c.execute(q, (school))
+    conn.close()
+    return teachers
+
+def get_teachers_by_department(school, department):
+    conn = sqlite3.connect("data.db")
+    c = conn.cursor()
+    q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "teacher_database"'
+    c.execute(q)
+    if not c.fetchone():
+        conn.close()
+        return []
+    q = 'SELECT last_name, first_name, teacher_id FROM teacher_database WHERE SCHOOL = ? and department = ?'
+    teachers = c.execute(q, (school, department))
+    conn.close()
+    return teachers
+
