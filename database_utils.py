@@ -86,7 +86,7 @@ def valid_teacher_login(username, password):
         conn.close()
         return False
     q = 'SELECT password, salt FROM teacher_database WHERE username = ?'
-    pepper_and_salt = c.execute(q, (username)).fetchone()
+    pepper_and_salt = c.execute(q, (username,)).fetchone()
     conn.close()
     if not pepper_and_salt or sha512((password + pepper_and_salt[1]) * 10000).hexdigest() != pepper_and_salt[0]:
         return False
@@ -139,7 +139,7 @@ def get_departments(school):
         conn.close()
         return []
     q = 'SELECT DISTINCT department FROM teacher_database WHERE SCHOOL = ?'
-    departments = c.execute(q, (school))
+    departments = c.execute(q, (school,))
     conn.close()
     return departments
 
@@ -153,7 +153,7 @@ def get_teachers(school):
         conn.close()
         return []
     q = 'SELECT last_name, first_name, teacher_id FROM teacher_database WHERE SCHOOL = ?'
-    teachers = c.execute(q, (school))
+    teachers = c.execute(q, (school,))
     conn.close()
     return teachers
 
