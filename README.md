@@ -2,9 +2,9 @@
 
 Members 
 -------
-| Name           | Position  |
-|----------------|-----------|
-| Serena Chan    | Front End |
+| Name           | Position  |                    GitHub                      |
+|----------------|-----------|------------------------------------------------|
+| Serena Chan    | Front End |[@serenadipity](https://github.com/serenadipity) |
 | Peter Strbik   | Back End  |
 | Sammi Wu Leung | Leader    |
 | Dillon Zhang   | Middle    |
