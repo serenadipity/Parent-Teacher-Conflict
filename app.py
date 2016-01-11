@@ -15,6 +15,19 @@ def about():
     return render_template("about.html")
 
 
+@app.route("/parentlogin", methods=['GET', 'POST'])
+def parent_login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if database_utils.valid_parent_login(username, password):
+            return "Successful Login"
+        else:
+            return "Failure to login"
+    else:
+        return render_template("parentlogin.html")
+
+
 @app.route("/parentcreate", methods=['GET', 'POST'])
 def parent_create():
     if request.method == 'POST':
@@ -31,6 +44,19 @@ def parent_create():
             return "Error:" + result[1]
     else:
         return render_template("parentcreate.html")
+
+
+@app.route("/teacherlogin", methods=['GET', 'POST'])
+def teacher_login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if database_utils.valid_teacher_login(username, password):
+            return "Successful Login"
+        else:
+            return "Failure to login"
+    else:
+        return render_template("teacherlogin.html")
 
 
 @app.route("/teachercreate", methods=['GET', 'POST'])
