@@ -171,3 +171,17 @@ def valid_create_teacher(username, password, repeat_password, first_name, last_n
         conn.close()
         return [True, "Successful Account Creation"]
     return False
+
+
+def get_schools():
+    conn = sqlite3.connect("data.db")
+    c = conn.cursor()
+    q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "teacher_database"'
+    c.execute(q)
+    if not c.fetchone():
+        conn.close()
+        return []
+    q = 'SELECT DISTINCT school FROM teacher_database'
+    schools = c.execute(q)
+    conn.close()
+    return schools
