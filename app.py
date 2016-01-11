@@ -6,7 +6,8 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template("home.html")   
+    return render_template("home.html")
+
 
 @app.route("/parentcreate", methods=['GET', 'POST'])
 def parent_create():
@@ -24,6 +25,24 @@ def parent_create():
             return "Error:" + result[1]
     else:
         return render_template("parentcreate.html")
+
+
+@app.route("/teachercreate", methods=['GET', 'POST'])
+def teacher_create():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        repeat_password = request.form['repeat_password']
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        email = request.form['email'].lower()
+        result = [False]
+        if result[0]:
+            return result[1]
+        else:
+            return "Error:" + result[1]
+    else:
+        return render_template("teachercreate.html")
 
 if __name__== "__main__":
     app.debug = True
