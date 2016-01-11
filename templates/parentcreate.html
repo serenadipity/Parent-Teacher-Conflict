@@ -3,15 +3,21 @@
 {% block title %} Parent Creation {% endblock %}
 
 {% block contents %}
-
-<form method="POST">
-  <p> Username: <input type="text" name="username" required> </p>
-  <p> Password: <input type="password" name="password" required> </p>
-  <p> Repeat Password: <input type="password" name="repeat_password" required> </p>
-  <p> First Name: <input type="text" name="first_name" required> </p>
-  <p> Last Name: <input type="text" name="last_name" required> </p>
-  <p> Email: <input type="email" name="email" required> </p>
-  <p><input type="submit" value="Submit"></p>
-</form>
-
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+	<form method="POST">
+	  <p> Username: <input type="text" name="username" required> </p>
+	  <p> Password: <input type="password" name="password" required> </p>
+	  <p> Repeat Password: <input type="password" name="repeat_password" required> </p>
+	  <p> First Name: <input type="text" name="first_name" required> </p>
+	  <p> Last Name: <input type="text" name="last_name" required> </p>
+	  <p> Email: <input type="email" name="email" required> </p>
+	  <p><input type="submit" value="Submit"></p>
+	</form>
+      </div>
+    </div>
+  </div>
+</body>
 {% endblock %}
