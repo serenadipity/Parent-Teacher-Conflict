@@ -29,7 +29,7 @@ def valid_parent_login(username, password):
         conn.close()
         return False
     q = 'SELECT password, salt FROM parent_database WHERE username = ?'
-    pepper_and_salt = c.execute(q, (username)).fetchone()
+    pepper_and_salt = c.execute(q, (username,)).fetchone()
     conn.close()
     if not pepper_and_salt or sha512((password + pepper_and_salt[1]) * 10000).hexdigest() != pepper_and_salt[0]:
         return False
