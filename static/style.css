@@ -37,6 +37,16 @@ body {
     margin-right: 10px;
 }
 
+h1.center {
+    text-align:center;
+}
+
+#slight_right {
+    margin:auto;
+    /*position: absolute;*/
+    right: 0px;
+    width: 880px;
+}
 /*
 #wrapper {
     padding-left: 0;
