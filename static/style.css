@@ -51,6 +51,11 @@ h1.center {
     right: 0px;
     width: 880px;
 }
+
+#generalfont {
+    font-family: chalkboard;
+    color: white;
+}
 /*
 #wrapper {
     padding-left: 0;
