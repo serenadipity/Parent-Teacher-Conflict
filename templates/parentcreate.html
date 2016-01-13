@@ -4,74 +4,74 @@
 
 {% block contents %}
 <!--
-<body>
+    <body>
+      <div class="container">
+	<div class="row">
+	  <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+	    <form method="POST">
+	      <p> Username: <input type="text" name="username" required> </p>
+	      <p> Password: <input type="password" name="password" required> </p>
+	      <p> Repeat Password: <input type="password" name="repeat_password" required> </p>
+	      <p> First Name: <input type="text" name="first_name" required> </p>
+	      <p> Last Name: <input type="text" name="last_name" required> </p>
+	      <p> Email: <input type="email" name="email" required> </p>
+	      <p><input type="submit" value="Submit"></p>
+	    </form>
+	  </div>
+	</div>
+      </div>
+    </body>
+    -->
+<body background="static/imgs/chalkboard.jpg">
+  <br><br><br>
   <div class="container">
+    
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-	<form method="POST">
-	  <p> Username: <input type="text" name="username" required> </p>
-	  <p> Password: <input type="password" name="password" required> </p>
-	  <p> Repeat Password: <input type="password" name="repeat_password" required> </p>
-	  <p> First Name: <input type="text" name="first_name" required> </p>
-	  <p> Last Name: <input type="text" name="last_name" required> </p>
-	  <p> Email: <input type="email" name="email" required> </p>
-	  <p><input type="submit" value="Submit"></p>
+	<form role="form" method="POST">
+	  <div id="generalfont">
+	    <h1 class="center">Parent Sign Up</h1>
+	  </div>
+	  <hr>
+	  <div class="row">
+	    <div class="col-xs-12 col-sm-6 col-md-6">
+	      <div class="form-group">
+                <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" required>
+	      </div>
+	    </div>
+	    <div class="col-xs-12 col-sm-6 col-md-6">
+	      <div class="form-group">
+		<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2" required>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <input type="text" name="student_name" id="student_name" class="form-control input-lg" placeholder="Student Name" tabindex="3" required>
+	  </div>
+	  <div class="form-group">
+	    <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4" required>
+	  </div>
+	  <div class="row">
+	    <div class="col-xs-12 col-sm-6 col-md-6">
+	      <div class="form-group">
+		<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" required>
+	      </div>
+	    </div>
+	    <div class="col-xs-12 col-sm-6 col-md-6">
+	      <div class="form-group">
+		<input type="password" name="repeat_password" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6" required>
+	      </div>
+	    </div>
+	  </div>
+	  
+	  <hr>
+	  <div class="row">
+	    <div class="col-xs-12 col-md-12"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+	  </div>
 	</form>
       </div>
     </div>
   </div>
-</body>
--->
-<body background="static/imgs/chalkboard.jpg">
-	<br><br><br>
-<div class="container">
-
-<div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-		<form role="form" method="POST">
-			<div id="generalfont">
-				<h1 class="center">Parent Sign Up</h1>
-			</div>
-			<hr>
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="form-group">
-                        <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" required>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="form-group">
-						<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2" required>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<input type="text" name="student_name" id="student_name" class="form-control input-lg" placeholder="Student Name" tabindex="3" required>
-			</div>
-			<div class="form-group">
-				<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4" required>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="form-group">
-						<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" required>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6">
-					<div class="form-group">
-						<input type="password" name="repeat_password" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6" required>
-					</div>
-				</div>
-			</div>
-			
-			<hr>
-			<div class="row">
-				<div class="col-xs-12 col-md-12"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-			</div>
-		</form>
-	</div>
-</div>
-</div>
 </body>
 
 {% endblock %}
