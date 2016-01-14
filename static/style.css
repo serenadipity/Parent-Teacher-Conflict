@@ -17,6 +17,12 @@ body {
     font-weight: bold;
 }
 
+@font-face {
+    font-family: chalktwo;
+    src: url(DrawingGuides.ttf);
+    font-weight: bold;
+}
+
 #title {
     position: fixed;
     top: 50px;
@@ -45,6 +51,11 @@ h1.center {
     text-align:center;
 }
 
+h1.center2 {
+    text-align:center;
+    font-size: 50px;
+}
+
 #slight_right {
     margin:auto;
     /*position: absolute;*/
@@ -52,9 +63,15 @@ h1.center {
     width: 880px;
 }
 
-#generalfont {
-    font-family: chalkboard;
+#font2 {
+    font-family: chalktwo;
     color: white;
+}
+
+#gohome {
+    position: fixed;
+    top: 30px;
+    left: 30px;
 }
 /*
 #wrapper {
