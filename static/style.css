@@ -74,17 +74,7 @@ h1.center2 {
     left: 30px;
 }
 
-.buttonhome {
-    background:url(imgs/apple2.jpg);
-    cursor:pointer;
-    border:none;
-    width:100px;
-    height:50px;
-}
 
-buttonhome:active {
-    background: url(imgs/apple2.jpg) no-repeat;
-}
 /*
 #wrapper {
     padding-left: 0;
