@@ -10,9 +10,9 @@ def home():
     return render_template("home.html")
 
 
-@app.route("/about")
+@app.route("/test")
 def about():
-    return render_template("about.html")
+    return render_template("test.html")
 
 
 @app.route("/parentlogin", methods=['GET', 'POST'])
