@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %} Teacher Schedule {% endblock %}
+
+{% block contents %}
+
+<div>
+  <p id="teacherinfo"> Stuff and Things </p>
+</div>
+
+<div>
+  <!-- For more information on a specific appointment -->
+  <p id="parentcomment"> Blah </p>
+  <p id="teachercomment"> Blah Blah </p>
+  
+  <form>
+    <input type="hidden" name="appointment" value="appointment_id">
+    Commment: <input type="text" name="tcomment"> <input type="submit" value="Comment">
+    </form>
+</div>
+
+<div>
+  <form>
+  <table>
+    <tr>
+      <th> <!-- Emptyness--> </th>
+      <th> Time Slot </th>
+      <th> Parent Name </th>
+      <th> Student Name </th>
+    </tr>
+    <tr id="row1">
+      <td> <input type="checkbox" name="reserve" value="slot 1"> </td>
+      <td> Time 1 </td>
+      <td> <!-- Not unsigned --> </td>
+      <td> <!-- Not unsigned --> </td>
+    </tr>
+    <tr id="row2">
+      <td> <!-- Can't reserve since parent signed up already --> </td>
+      <td> Time 2 </td>
+      <td> Parent 1 </td>
+      <td> Student 1 </td>
+    </tr>
+  </table>
+
+  <input type="submit" value="Submit">
+  </form>
+  
+</div>
+
+
+
+{% endblock %}
