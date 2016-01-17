@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %} Selection Schedule {% endblock %}
+
+{% block contents %}
+
+<div>
+  <p> Parent Info </p>
+</div>
+
+<div>
+  <form>
+    Child Name: <input type="text" name="childname"> <input type="submit" value="Add">
+  </form>
+  <form>
+    Teacher Name: <select>
+      <option value="teacherid"> teacher name </option>
+      <input type="submit" value="Add">
+  </form>
+</div>
+
+<div>
+  <form>
+  <table>
+    <tr>
+      <th> Time Slot </th>
+      <th> Parent Name </th>
+      <th> Student Name </th>
+    </tr>
+    <tr id="row1">
+      <td> <input type="checkbox" name="reserve" value="slot 1"> </td>
+      <td> Time 1 </td>
+      <td> <!-- Not unsigned --> </td>
+      <td> <!-- Not unsigned --> </td>
+    </tr>
+    <tr id="row2">
+      <td> <!-- Can't reserve since parent signed up already --> </td>
+      <td> Time 2 </td>
+      <td> Parent 1 </td>
+      <td> Student 1 </td>
+    </tr>
+  </table>
+
+  <input type="submit" value="Submit">
+  </form>
+  
+</div>
+
+
+
+{% endblock %}
