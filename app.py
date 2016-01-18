@@ -83,6 +83,14 @@ def teacher_create():
     else:
         return render_template("teachercreate.html")
 
+@app.route("/teacherschedule")
+def teacherschedule():
+    return render_template("teacherschedule.html")
+
+@app.route("/parentselect")
+def parentselect():
+    return render_template("parentselect.html")
+
 if __name__== "__main__":
     app.debug = True
     app.secret_key = "Password"
