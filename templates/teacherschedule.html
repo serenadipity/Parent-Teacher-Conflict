@@ -3,27 +3,22 @@
 {% block title %} Teacher Schedule {% endblock %}
 
 {% block contents %}
+<body background="static/imgs/chalkboard.jpg">
 
-<div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 colbg1 row-height">
+      <div>
   <p id="teacherinfo"> Stuff and Things </p>
 </div>
-
-<div>
-  <!-- For more information on a specific appointment -->
-  <p id="parentcomment"> Blah </p>
-  <p id="teachercomment"> Blah Blah </p>
-  
-  <form>
-    <input type="hidden" name="appointment" value="appointment_id">
-    Commment: <input type="text" name="tcomment"> <input type="submit" value="Comment">
-    </form>
-</div>
-
-<div>
+    </div>
+    <div class="col-md-6 colbg2 row-height2">
+      <div>
   <form>
   <table>
     <tr>
-      <th> <!-- Emptyness--> </th>
+      <th> <!-- Emptiness--> </th>
       <th> Time Slot </th>
       <th> Parent Name </th>
       <th> Student Name </th>
@@ -44,47 +39,27 @@
 
   <input type="submit" value="Submit">
   </form>
+
+</div>
+    </div>
+    <div class="col-md-6 colbg1 row-height">
+      <div>
+  <!-- For more information on a specific appointment -->
+  <p id="parentcomment"> Blah </p>
+  <p id="teachercomment"> Blah Blah </p>
   
-<!--  
-  <div class="container">
-    <div id="bigbox">
-      <p>Hello World</p>
-      <div id="box1">
-        <p>box 1</p>
-      </div>
-      <div id="box2">
-        <p>box 2</p>
-      </div>
-    </div>
-  </div>
--->
+  <form>
+    <input type="hidden" name="appointment" value="appointment_id">
+    Commment: <input type="text" name="tcomment"> <input type="submit" value="Comment">
+    </form>
+</div>
 
-<!--
-  <div class="row">
-    <div class="col-md-4 row-height">
-        col-md-4
     </div>
-    <div class="col-md-6 row-height">
-        col-md-6
-    </div>
-    <div class="col-md-4 row-height">
-      blah
-    </div>
-  </div>
--->
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 pa row-height">Ha</div>
-    <div class="col-md-6 ha row-height2">ha</div>
-    <div class="col-md-6 ha">pa</div>
   </div>
 </div>
 
 
-
-</div>
-
+</body>
 
 
 {% endblock %}

@@ -111,24 +111,26 @@ h1.center2 {
 }
 
 .row-height2 {
-    height: 200px;
+    height: 400px;
     text-align: center;
     padding-top: 25px;
 }
 
-.pa {
-    background: url(imgs/chalkboard9.png) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+.colbg1 {
+    background: url(imgs/chalkboard9.png);  
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: 490px 200px;
 }
 
-.ha {
-    background-color: #f5f3f3;
+.colbg2 {
+    background: url(imgs/chalkboard9.png);  
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: 490px 400px;
 }
-
-
 
 
 
