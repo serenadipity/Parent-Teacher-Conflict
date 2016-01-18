@@ -74,15 +74,45 @@ h1.center2 {
     left: 30px;
 }
 
+/* Test Page Code */
 
 table, th, td {
-    border: 1px solid black;
+    border: 20px solid #663300;
     border-collapse: collapse;
 }
+
+
 th, td {
-    padding: 5px;
-    text-align: left;    
+    padding: 10px;
+    text-align: center;    
 }
+
+table {
+    width: 1000px;
+}
+
+td {
+    height: 400px;
+    /*background: url(imgs/chalkboard9.png); */
+}
+
+/*
+.bg1 {
+    background: url(imgs/chalkboard9.png);  
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: 500px 400px;    
+}
+
+.bg2 {
+    background: url(imgs/chalkboard9.png);  
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: 500px 800px;
+}
+*/
 
 /*
 .row {
