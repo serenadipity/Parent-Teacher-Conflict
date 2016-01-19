@@ -5,20 +5,25 @@
 {% block contents %}
 <body background="static/imgs/chalkboard.jpg">
 
+<br><br><br><br>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 colbg1 row-height">
-      <div>
-  <p id="teacherinfo"> Stuff and Things </p>
-</div>
-    </div>
-    <div class="col-md-6 colbg2 row-height2">
-      <div>
-  <form>
+  <center>
   <table>
     <tr>
-      <th> <!-- Emptiness--> </th>
+      <td class="bg1">
+        <p id="teacherinfo">
+Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be? He's the exact opposite of the hero. And most times they're friends, like you and me! I should've known way back when... You know why, David? Because of the kids. They called me Mr Glass.
+        </p>
+      </td>
+      <td rowspan="2" class="bg2">
+        <div>
+          <p>Time </p>
+<!--
+            <form>
+  <table>
+    <tr>
+      <th>Emptiness</th>
       <th> Time Slot </th>
       <th> Parent Name </th>
       <th> Student Name </th>
@@ -26,11 +31,11 @@
     <tr id="row1">
       <td> <input type="checkbox" name="reserve" value="slot 1"> </td>
       <td> Time 1 </td>
-      <td> <!-- Not unsigned --> </td>
-      <td> <!-- Not unsigned --> </td>
+      <td>Not unsigned</td>
+      <td>Not unsigned</td>
     </tr>
     <tr id="row2">
-      <td> <!-- Can't reserve since parent signed up already --> </td>
+      <td>Can't reserve since parent signed up already</td>
       <td> Time 2 </td>
       <td> Parent 1 </td>
       <td> Student 1 </td>
@@ -40,23 +45,30 @@
   <input type="submit" value="Submit">
   </form>
 
-</div>
-    </div>
-    <div class="col-md-6 colbg1 row-height colpos1">
-      <div>
+-->
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="bg1"> 
+        <div>
   <!-- For more information on a specific appointment -->
-  <p id="parentcomment"> Blah </p>
-  <p id="teachercomment"> Blah Blah </p>
+          <p id="parentcomment"> Blah </p>
+          <p id="teachercomment"> Blah Blah </p>
   
-  <form>
-    <input type="hidden" name="appointment" value="appointment_id">
-    Commment: <input type="text" name="tcomment"> <input type="submit" value="Comment">
-    </form>
+          <form>
+          <input type="hidden" name="appointment" value="appointment_id">
+          Comment: <input type="text" name="tcomment"> <input type="submit" value="Comment">
+          </form>
+        </div>
+    </td>
+
+
+    </tr>
+  </table>
+</center>
 </div>
 
-    </div>
-  </div>
-</div>
 
 
 </body>

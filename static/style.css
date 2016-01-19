@@ -63,6 +63,11 @@ h1.center2 {
     width: 880px;
 }
 
+#font1 {
+    font-family: chalkboard;
+    color: white;
+}
+
 #font2 {
     font-family: chalktwo;
     color: white;
@@ -84,7 +89,8 @@ table, th, td {
 
 th, td {
     padding: 10px;
-    text-align: center;    
+    text-align: center;
+    
 }
 
 table {
@@ -93,8 +99,11 @@ table {
 
 td {
     height: 300px;
+    width: 400px;
+    padding: 20px;
     /*background: url(imgs/chalkboard9.png); */
 }
+
 
 .bg1 {
     background: url(imgs/chalkboard9.png);  
@@ -109,7 +118,7 @@ td {
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
-    background-size: 410px 600px;
+    background-size: 400px 600px;
 }
 
 
