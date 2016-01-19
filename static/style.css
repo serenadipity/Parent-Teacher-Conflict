@@ -89,7 +89,7 @@ th, td {
     
 }
 
-table {
+#outer {
     width: 1000px;
 }
 
@@ -111,7 +111,7 @@ td {
     width: 100px;
 }
 
-.bg1 {
+#outer_bg1 {
     background: url(imgs/chalkboard9.png);  
     -webkit-background-size: contain;
     -moz-background-size: contain;
@@ -119,7 +119,7 @@ td {
     background-size: 500px 400px;    
 }
 
-.bg2 {
+#outer_bg2 {
     background: url(imgs/chalkboard10.png);  
     -webkit-background-size: contain;
     -moz-background-size: contain;
