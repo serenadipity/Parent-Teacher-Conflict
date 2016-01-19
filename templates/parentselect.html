@@ -3,7 +3,98 @@
 {% block title %} Selection Schedule {% endblock %}
 
 {% block contents %}
+<body background="static/imgs/chalkboard.jpg">
 
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+          <div style="font-family:chalkboard; color:white;">
+      <ul class="nav navbar-nav">
+          <!--<li><a href="/"><img src=""
+             alt="logo"
+             height="25"></a></li>-->
+              <li><a = href="/"><b>PTC</b></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+              <li><a href="#"><b>Sign Out</b></a></li>
+      </ul>
+        </div>
+  </nav>
+
+<br><br><br><br>
+
+<div class="container">
+  <center>
+  <table>
+    <tr>
+      <td class="bg1" style="font-family:chalktwo; color:white;">
+        <h3><u> Parent Information </u></h3>
+        <p id="teacherinfo">
+          Info: info
+          <br>
+          Info: info
+          <br>
+          Info: info
+        </p>
+      </td>
+      <td rowspan="2" class="bg2" style="font-family:chalktwo; color:white;">
+        <div>
+          <h3><u> Appointment Times </u></h3>
+
+<!--
+            <form>
+  <table>
+    <tr>
+      <th>Emptiness</th>
+      <th> Time Slot </th>
+      <th> Parent Name </th>
+      <th> Student Name </th>
+    </tr>
+    <tr id="row1">
+      <td> <input type="checkbox" name="reserve" value="slot 1"> </td>
+      <td> Time 1 </td>
+      <td>Not unsigned</td>
+      <td>Not unsigned</td>
+    </tr>
+    <tr id="row2">
+      <td>Can't reserve since parent signed up already</td>
+      <td> Time 2 </td>
+      <td> Parent 1 </td>
+      <td> Student 1 </td>
+    </tr>
+  </table>
+
+  <input type="submit" value="Submit">
+  </form>
+
+-->
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="bg1" style="font-family:chalktwo; color:white;"> 
+        <div>
+  <!-- For more information on a specific appointment -->
+          <p id="parentcomment"> Blah </p>
+          <p id="teachercomment"> Blah Blah </p>
+          <form>
+            Child Name: <input type="text" name="childname"> <input type="submit" value="Add">
+          </form>
+          <form>
+          Teacher Name: <select>
+          <option value="teacherid"> teacher name </option>
+          <input type="submit" value="Add">
+          </form>
+        </div>
+      </td>
+
+
+    </tr>
+  </table>
+</center>
+</div>
+
+
+<!--
 <div>
   <p> Parent Info </p>
 </div>
@@ -30,11 +121,11 @@
     <tr id="row1">
       <td> <input type="checkbox" name="reserve" value="slot 1"> </td>
       <td> Time 1 </td>
-      <td> <!-- Not unsigned --> </td>
-      <td> <!-- Not unsigned --> </td>
+      <td> <!-- Not unsigned --> <!--</td>
+      <td> <!-- Not unsigned --> <!--</td>
     </tr>
     <tr id="row2">
-      <td> <!-- Can't reserve since parent signed up already --> </td>
+      <td> <!-- Can't reserve since parent signed up already --> <!--</td>
       <td> Time 2 </td>
       <td> Parent 1 </td>
       <td> Student 1 </td>
