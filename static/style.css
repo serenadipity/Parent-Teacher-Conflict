@@ -77,7 +77,7 @@ h1.center2 {
 /* Test Page Code */
 
 table, th, td {
-    border: 20px solid #663300;
+    border: 1px solid #663300;
     border-collapse: collapse;
 }
 
@@ -88,31 +88,30 @@ th, td {
 }
 
 table {
-    width: 1000px;
+    width: 800px;
 }
 
 td {
-    height: 400px;
+    height: 300px;
     /*background: url(imgs/chalkboard9.png); */
 }
 
-/*
 .bg1 {
     background: url(imgs/chalkboard9.png);  
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
-    background-size: 500px 400px;    
+    background-size: 400px 300px;    
 }
 
 .bg2 {
-    background: url(imgs/chalkboard9.png);  
+    background: url(imgs/chalkboard10.png);  
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
-    background-size: 500px 800px;
+    background-size: 410px 600px;
 }
-*/
+
 
 /*
 .row {
