@@ -117,43 +117,7 @@ td {
     background-size: 400px 600px;
 }
 
-
-/*
-.row {
-    padding: 100px;
+ .navbar-default {
+    background-color: transparent;
 }
 
-.row-height {
-    height: 200px;
-    text-align: center;
-    padding-top: 25px;
-}
-
-.row-height2 {
-    height: 400px;
-    text-align: center;
-    padding-top: 25px;
-}
-
-.colbg1 {
-    background: url(imgs/chalkboard9.png);  
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: 490px 200px;
-}
-
-.colpos1 {
-    position: fixed;
-    top: 400px;
-
-}
-
-.colbg2 {
-    background: url(imgs/chalkboard9.png);  
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: 490px 400px;
-}
-*/
