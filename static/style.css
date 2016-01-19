@@ -90,12 +90,12 @@ th, td {
 }
 
 table {
-    width: 800px;
+    width: 1000px;
 }
 
 td {
-    height: 300px;
-    width: 400px;
+    height: 400px;
+    width: 500px;
     padding: 20px;
     /*background: url(imgs/chalkboard9.png); */
 }
@@ -116,7 +116,7 @@ td {
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
-    background-size: 400px 300px;    
+    background-size: 500px 400px;    
 }
 
 .bg2 {
@@ -124,7 +124,7 @@ td {
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
-    background-size: 400px 600px;
+    background-size: 500px 800px;
 }
 
  .navbar-default {
