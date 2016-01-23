@@ -77,11 +77,8 @@ def teacher_create():
         school = request.form['school']
         if school == 'other':
             school = request.form['other_school']
-        department = request.form['department']
-        if department == 'other':
-            department = request.form['other_department']
         room = request.form['room']
-        result = database_utils.valid_create_teacher(username, password, repeat_password, first_name, last_name, email, school, department, room)
+        result = database_utils.valid_create_teacher(username, password, repeat_password, first_name, last_name, email, school, room)
         if result[0]:
             return render_template("teacherlogin.html")  # result[1] Ginga Thing
         else:

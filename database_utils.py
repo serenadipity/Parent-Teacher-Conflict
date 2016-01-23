@@ -109,9 +109,9 @@ def valid_create_teacher(username, password, repeat_password, first_name, last_n
     else:
         salt = uuid4().hex
         hash_password = sha512((password + salt) * 10000).hexdigest()
-        q = 'SELECT COUNT(*) FROM parent_database'
+        q = 'SELECT COUNT(*) FROM teacher_database'
         num_rows = c.execute(q).fetchone()[0]
-        q = 'INSERT INTO parent_database (teacher_id, username, password, salt, first_name, last_name, email, school, room) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)'
+        q = 'INSERT INTO teacher_database (teacher_id, username, password, salt, first_name, last_name, email, school, room) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)'
         c.execute(q, (num_rows + 1, username, hash_password, salt, first_name, last_name, email, school, room))
         conn.commit()
         conn.close()
@@ -166,3 +166,5 @@ Parent Teacher Conference Database - Stores the different Appointments
 | INT       | INT        |      |      | INT            |
 +-----------+------------+------+------+----------------+
 """
+
+
