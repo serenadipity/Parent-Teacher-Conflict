@@ -84,7 +84,8 @@ def teacher_create():
         else:
             return render_template("teacher_create.html") # result[1] Ginga Thing
     else:
-        return render_template("teachercreate.html")
+        school_list = database_utils.get_schools()
+        return render_template("teachercreate.html", schools = school_list)
 
 
 @app.route("/parentselect", methods=['GET', 'POST'])

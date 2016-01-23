@@ -128,8 +128,11 @@ def get_schools():
         return []
     q = 'SELECT DISTINCT school FROM teacher_database'
     schools = c.execute(q)
+    school_list = []
+    for school in schools:
+        school_list.append(school[0])
     conn.close()
-    return schools
+    return school_list
 
 
 def get_teachers(school):
@@ -202,3 +205,6 @@ def get_parent_appointments(PID):
         entry.extend(name)
     conn.close()
     return appointments
+
+
+

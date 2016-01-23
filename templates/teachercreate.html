@@ -44,6 +44,9 @@
 	    <div class="form-group">
 	      <select class="form-control input-lg" id="school" name="school" tabindex="5"required>
 		<option value="Select School" selected disabled>Select School</option>
+		{% for school in schools %}
+		<option value={{school}}>{{school}}</option>
+		{% endfor %}
 		<option value="other">Other</option>
 	      </select>
 	    </div>
