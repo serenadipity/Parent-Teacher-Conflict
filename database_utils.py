@@ -18,8 +18,8 @@ Parent Database - Stores parents login information
 
 
 # Validates a parent logging in
-# Returns a Boolean
-# True if successful, False if unsuccessful
+# Returns an int
+# -1 if failed, Parent Id if successful
 def valid_parent_login(username, password):
     conn = sqlite3.connect("data.db")
     c = conn.cursor()
@@ -30,10 +30,13 @@ def valid_parent_login(username, password):
         return False
     q = 'SELECT password, salt FROM parent_database WHERE username = ?'
     pepper_and_salt = c.execute(q, (username,)).fetchone()
+    if pepper_and_salt and sha512((password + pepper_and_salt[1]) * 10000).hexdigest() == pepper_and_salt[0]:
+        q = "SELECT parent_id where username = ?"
+        id = c.execute(q, (username,)).fetchone()
+        conn.close()
+        return id
     conn.close()
-    if not pepper_and_salt or sha512((password + pepper_and_salt[1]) * 10000).hexdigest() != pepper_and_salt[0]:
-        return False
-    return True
+    return -1
 
 
 # Adds a parent to the database
@@ -69,11 +72,11 @@ def valid_create_parent(username, password, repeat_password, first_name, last_na
 # Teacher Database ------------------------------------------------------------------------------------------------------------------------------------------
 """
 Teacher Database - Stores parents login information
-+------------+----------+----------+------+------------+-----------+-------+--------+------------+------+
-| Teacher_ID | Username | Password | Salt | First Name | Last Name | Email | School | Department | Room |
-+------------+----------+----------+------+------------+-----------+-------+--------+------------+------+
-| INT        | TEXT     | INT      | INT  | TEXT       | TEXT      | TEXT  | TEXT   | TEXT       | TEXT |
-+------------+----------+----------+------+------------+-----------+-------+--------+------------+------+
++------------+----------+----------+------+------------+-----------+-------+--------+------+
+| Teacher_ID | Username | Password | Salt | First Name | Last Name | Email | School | Room |
++------------+----------+----------+------+------------+-----------+-------+--------+------+
+| INT        | TEXT     | INT      | INT  | TEXT       | TEXT      | TEXT  | TEXT   | TEXT |
++------------+----------+----------+------+------------+-----------+-------+--------+------+
 """
 
 
@@ -93,10 +96,10 @@ def valid_teacher_login(username, password):
     return True
 
 
-def valid_create_teacher(username, password, repeat_password, first_name, last_name, email, school, department, room):
+def valid_create_teacher(username, password, repeat_password, first_name, last_name, email, school, room):
     conn = sqlite3.connect("data.db")
     c = conn.cursor()
-    q = 'CREATE TABLE IF NOT EXISTS teacher_database (teacher_id INT, username TEXT, password INT, salt INT, first_name TEXT, last_name TEXT, email TEXT, school TEXT, department TEXT, room TEXT)'
+    q = 'CREATE TABLE IF NOT EXISTS teacher_database (teacher_id INT, username TEXT, password INT, salt INT, first_name TEXT, last_name TEXT, email TEXT, school TEXT, room TEXT)'
     c.execute(q)
     q = 'SELECT username, email FROM teacher_database'
     valid_data = utils.valid_data(username, password, repeat_password, email, users)
@@ -108,12 +111,11 @@ def valid_create_teacher(username, password, repeat_password, first_name, last_n
         hash_password = sha512((password + salt) * 10000).hexdigest()
         q = 'SELECT COUNT(*) FROM parent_database'
         num_rows = c.execute(q).fetchone()[0]
-        q = 'INSERT INTO parent_database (teacher_id, username, password, salt, first_name, last_name, email, school, department, room) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
-        c.execute(q, (num_rows + 1, username, hash_password, salt, first_name, last_name, email, school, Department, room))
+        q = 'INSERT INTO parent_database (teacher_id, username, password, salt, first_name, last_name, email, school, room) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)'
+        c.execute(q, (num_rows + 1, username, hash_password, salt, first_name, last_name, email, school, room))
         conn.commit()
         conn.close()
         return [True, "Successful Account Creation"]
-    return False
 
 
 def get_schools():
@@ -130,20 +132,6 @@ def get_schools():
     return schools
 
 
-def get_departments(school):
-    conn = sqlite3.connect("data.db")
-    c = conn.cursor()
-    q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "teacher_database"'
-    c.execute(q)
-    if not c.fetchone():
-        conn.close()
-        return []
-    q = 'SELECT DISTINCT department FROM teacher_database WHERE SCHOOL = ?'
-    departments = c.execute(q, (school,))
-    conn.close()
-    return departments
-
-
 def get_teachers(school):
     conn = sqlite3.connect("data.db")
     c = conn.cursor()
@@ -158,16 +146,23 @@ def get_teachers(school):
     return teachers
 
 
-def get_teachers_by_department(school, department):
-    conn = sqlite3.connect("data.db")
-    c = conn.cursor()
-    q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "teacher_database"'
-    c.execute(q)
-    if not c.fetchone():
-        conn.close()
-        return []
-    q = 'SELECT last_name, first_name, teacher_id FROM teacher_database WHERE SCHOOL = ? and department = ?'
-    teachers = c.execute(q, (school, department))
-    conn.close()
-    return teachers
+# Availablity Database --------------------------------------------------------------------------------------------------------------------------------------
+"""
+Teacher Availablity Database - Stores when teachers are available
++------------+------+-------+----------+
+| Teacher_ID | Date | Times | Sections |
++------------+------+-------+----------+
+| INT        |      |       | INT      |
++------------+------+-------+----------+
+"""
 
+
+# Appointment Database --------------------------------------------------------------------------------------------------------------------------------------
+"""
+Parent Teacher Conference Database - Stores the different Appointments
++-----------+------------+------+------+----------------+
+| Parent_ID | Teacher_ID | Date | Time | Section Number |
++-----------+------------+------+------+----------------+
+| INT       | INT        |      |      | INT            |
++-----------+------------+------+------+----------------+
+"""

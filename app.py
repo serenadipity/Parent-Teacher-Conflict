@@ -20,10 +20,13 @@ def parent_login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        if database_utils.valid_parent_login(username, password):
-            return "Successful Login"
+        verifylogin = database_utils.valid_parent_login(username, password)
+        if verifylogin != -1:
+            session['type'] = 'parent'
+            session['id'] = verifylogin
+            return url_for("parentschedule")
         else:
-            return "Failure to login"
+            return render_template("parentlogin.html")  # Failure to Login, Ginga
     else:
         return render_template("parentlogin.html")
 
@@ -51,10 +54,13 @@ def teacher_login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        if database_utils.valid_teacher_login(username, password):
-            return "Successful Login"
+        verifylogin = database_utils.valid_teacher_login(username, password)
+        if verifylogin != -1:
+            session['type'] = "teacher"
+            session['id'] = verifylogin
+            return url_for("teacherschedule")
         else:
-            return "Failure to login"
+            return render_template("teacherlogin.html")  # "Failure to login" Ginga Thing to Show This
     else:
         return render_template("teacherlogin.html")
 
@@ -77,21 +83,39 @@ def teacher_create():
         room = request.form['room']
         result = database_utils.valid_create_teacher(username, password, repeat_password, first_name, last_name, email, school, department, room)
         if result[0]:
-            return result[1]
+            return render_template("teacherlogin.html")  # result[1] Ginga Thing
         else:
-            return "Error:" + result[1]
+            return render_template("teacher_create.html") # result[1] Ginga Thing
     else:
         return render_template("teachercreate.html")
 
-@app.route("/teacherschedule")
-def teacherschedule():
-    return render_template("teacherschedule.html")
 
-@app.route("/parentselect")
+@app.route("/parentselect", methods=['GET', 'POST'])
 def parentselect():
-    return render_template("parentselect.html")
+    if 'type' in session and session['type'] == "parent":
+        if request.method == 'POST':
+            # Form Stuff
+            return render_template("parentselect.html")
+        else:
+            # do stuff with session['id']
+            return render_template("parentselect.html")
+    else:
+        return "Error, Something went wrong. Link to home" #NEEDS to create page
 
-if __name__== "__main__":
+
+@app.route("/teacherschedule", methods=['GET', 'POST'])
+def teacherschedule():
+    if 'type' in session and session['type'] == "teacher":
+        if request.method == 'POST':
+            # Form Stuff
+            return render_template("teacherschedule.html")
+        else:
+            # do stuff with session['id']
+            return render_template("teacherschedule.html")
+    else:
+        return "Error, Something went wrong. Link to home" #Same page as method above
+
+if __name__ == "__main__":
     app.debug = True
     app.secret_key = "Password"
     app.run(host='0.0.0.0', port=8000)
