@@ -75,8 +75,8 @@ def teacher_create():
         last_name = request.form['last_name']
         email = request.form['email'].lower()
         school = request.form['school']
-        if school == 'other':
-            school = request.form['other_school']
+        if (school == "other"):
+            school = request.form['other']
         room = request.form['room']
         result = database_utils.valid_create_teacher(username, password, repeat_password, first_name, last_name, email, school, room)
         if result[0]:

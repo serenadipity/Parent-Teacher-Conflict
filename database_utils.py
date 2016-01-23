@@ -102,6 +102,7 @@ def valid_create_teacher(username, password, repeat_password, first_name, last_n
     q = 'CREATE TABLE IF NOT EXISTS teacher_database (teacher_id INT, username TEXT, password INT, salt INT, first_name TEXT, last_name TEXT, email TEXT, school TEXT, room TEXT)'
     c.execute(q)
     q = 'SELECT username, email FROM teacher_database'
+    users = c.execute(q)
     valid_data = utils.valid_data(username, password, repeat_password, email, users)
     if not valid_data[0]:
         conn.close()
