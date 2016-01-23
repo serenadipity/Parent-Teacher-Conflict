@@ -193,7 +193,7 @@ def get_parent_appointments(PID):
     if not c.fetchone():
         conn.close()
         return []
-    q = 'SELECT teacher_id, date, time FROM appointment_database WHERE PARENT_ID = ?'
+    q = 'SELECT teacher_id, date, time, section_number FROM appointment_database WHERE PARENT_ID = ?'
     appointments = c.execute(q, (PID,))
     for entry in appointments:
         TID = entry[0]
