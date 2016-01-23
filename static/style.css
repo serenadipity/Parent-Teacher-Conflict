@@ -56,6 +56,11 @@ h1.center2 {
     font-size: 50px;
 }
 
+#form_title {
+    font-size: 25px;
+    color:white;
+}
+
 #slight_right {
     margin:auto;
     /*position: absolute;*/
