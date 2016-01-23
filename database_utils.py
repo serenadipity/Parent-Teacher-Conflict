@@ -160,6 +160,19 @@ Teacher Availablity Database - Stores when teachers are available
 +------------+------+-------+----------+
 """
 
+def get_teacher_availability(TID):
+    conn = sqlite3.connect("data.db")
+    c = conn.cursor()
+    q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "availability_database"'
+    c.execute(q)
+    if not c.fetchone():
+        conn.close()
+        return []
+    q = 'SELECT date, time, sections FROM availability_database WHERE TEACHER_ID = ?'
+    availability = c.execute(q, (TID,))
+    conn.close()
+    return availability
+
 
 # Appointment Database --------------------------------------------------------------------------------------------------------------------------------------
 """
