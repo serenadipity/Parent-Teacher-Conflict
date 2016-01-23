@@ -167,4 +167,38 @@ Parent Teacher Conference Database - Stores the different Appointments
 +-----------+------------+------+------+----------------+
 """
 
+def get_teacher_appointments(TID):
+    conn = sqlite3.connect("data.db")
+    c = conn.cursor()
+    q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "appointment_database"'
+    c.execute(q)
+    if not c.fetchone():
+        conn.close()
+        return []
+    q = 'SELECT parent_id, date, time, section_number FROM appointment_database WHERE TEACHER_ID = ?'
+    appointments = c.execute(q, (TID,))
+    for entry in appointments:
+        PID = entry[0]
+        q = 'SELECT first_name, last_name FROM parent_database WHERE PARENT_ID = ?'
+        name = c.execute(q, (PID,))
+        entry.extend(name)
+    conn.close()
+    return appointments
 
+def get_parent_appointments(PID):
+    conn = sqlite3.connect("data.db")
+    c = conn.cursor()
+    q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "appointment_database"'
+    c.execute(q)
+    if not c.fetchone():
+        conn.close()
+        return []
+    q = 'SELECT teacher_id, date, time FROM appointment_database WHERE PARENT_ID = ?'
+    appointments = c.execute(q, (PID,))
+    for entry in appointments:
+        TID = entry[0]
+        q = 'SELECT first_name, last_name FROM teacher_database WHERE TEACHER_ID = ?'
+        name = c.execute(q, (TID,))
+        entry.extend(name)
+    conn.close()
+    return appointments
