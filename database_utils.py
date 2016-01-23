@@ -31,7 +31,7 @@ def valid_parent_login(username, password):
     q = 'SELECT password, salt FROM parent_database WHERE username = ?'
     pepper_and_salt = c.execute(q, (username,)).fetchone()
     if pepper_and_salt and sha512((password + pepper_and_salt[1]) * 10000).hexdigest() == pepper_and_salt[0]:
-        q = "SELECT parent_id where username = ?"
+        q = "SELECT parent_id FROM parent_database WHERE username = ?"
         id = c.execute(q, (username,)).fetchone()
         conn.close()
         return id

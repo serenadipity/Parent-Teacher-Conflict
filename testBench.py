@@ -10,7 +10,7 @@ class testBench(unittest.TestCase):
         print "Done Testing"
     def test1_create_parent(self):
         r = database_utils.valid_create_parent("Alpha1", "Aa1!Aa1!", "Aa1!Aa1!", "Alpha", "1", "Alpha1@hotmail.com")
-        self.assertEqual(r[1], True)
+        self.assertEqual(r[0], True)
     def test2_create_parent(self):
         r = database_utils.valid_create_parent("Beta2", "Bb2!Bb2!", "Bb2!Bb2!2", "Beta", "2", "Beta2@hotmail.com")
         self.assertEqual(r[0], False)
@@ -22,7 +22,7 @@ class testBench(unittest.TestCase):
         self.assertEqual(r, True)
     def test5_parent_login(self):
         r = database_utils.valid_parent_login("Alpha1", "Aa1!Aa1!1")
-        self.assertEqual(r, False)
+        self.assertEqual(r, -1)
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(testBench)
