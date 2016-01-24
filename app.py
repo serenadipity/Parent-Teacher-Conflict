@@ -45,7 +45,7 @@ def parent_create():
             return redirect("parentlogin")
         else:
             message = result[1]
-            return render_template("parentcreate.html",error = True, message = message)
+            return render_template("parentcreate.html", error=True, message=message)
     else:
         return render_template("parentcreate.html")
 
@@ -61,7 +61,7 @@ def teacher_login():
             session['id'] = verifylogin
             return redirect("teacherschedule")
         else:
-            return render_template("teacherlogin.html", error = True)  # "Failure to login" Ginga Thing to Show This
+            return render_template("teacherlogin.html", error=True)
     else:
         return render_template("teacherlogin.html")
 
@@ -88,7 +88,7 @@ def teacher_create():
             return render_template("teachercreate.html", schools = school_list, error = True, message = message) # result[1] Ginga Thing
     else:
         school_list = database_utils.get_schools()
-        return render_template("teachercreate.html", schools = school_list)
+        return render_template("teachercreate.html", schools=school_list)
 
 
 @app.route("/parentselect", methods=['GET', 'POST'])
@@ -101,20 +101,22 @@ def parentselect():
             # do stuff with session['id']
             return render_template("parentselect.html")
     else:
-        return "Error, Something went wrong. Link to home" #NEEDS to create page
+        return redirect("error")
 
 
 @app.route("/teacherschedule", methods=['GET', 'POST'])
 def teacherschedule():
     if 'type' in session and session['type'] == "teacher":
         if request.method == 'POST':
-            # Form Stuff
-            return render_template("teacherschedule.html")
+            teacher_id = session['id']
+            date = request.form['date']
+            appointments = database_utils.get_teacher_appointments(teacher_id, date)
+            return render_template("teacherschedule.html", appointment=appointments)
         else:
             # do stuff with session['id']
             return render_template("teacherschedule.html")
     else:
-        return "Error, Something went wrong. Link to home" #Same page as method above
+        return redirect("error")
 
 
 @app.route("/addavailability", methods=['POST'])
