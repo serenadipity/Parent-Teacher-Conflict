@@ -105,8 +105,8 @@ def parentselect():
 @app.route("/findTeachers", methods=['POST'])
 def findTeachers():
     if request.method == 'POST' and 'type' in session and session['type'] == "parent" and 'id' in session:
-        date = request.form('date')
-        school = request.form('school')
+        date = request.form['date']
+        school = request.form['school']
         availableTeachers = database_utils.get_all_available(date, school)
         session['step'] = 1
         step = session['step']
@@ -119,7 +119,7 @@ def findTeachers():
 @app.route("/findAppointments", methods=['POST'])
 def findAppointments():
     if request.method == 'POST' and 'type' in session and session['type'] == "parent" and 'id' in session:
-        teachers = request.form('teachers')
+        teachers = request.form['teachers']
         date = session['date']
         teacherschedules = []
         for teacher in teachers:

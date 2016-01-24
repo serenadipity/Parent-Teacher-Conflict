@@ -73,7 +73,22 @@
 	      
 	  {% if step == 2 %}
 	  <form method="POST" action="scheduleAppointments">
-	    {{appointments}}
+	    <table id="inner">
+	      <tr>
+		<td id="inner_row"> Time </td>
+		<td id="inner_row"> Section </td>
+		<td id="inner_row"> First Name </td>
+		<td id="inner_row"> Last Name </td>
+	      </tr>
+	      {% for time, section, first, last in appointment %}
+	      <tr>
+		<td id="inner_row">{{time}}</td>
+		<td id="inner_row">{{section}}</td>
+		<td id="inner_row">{{first}}</td>
+		<td id="inner_row">{{last}}</td>
+	      </tr>
+	      {% endfor %}
+	    </table>
 	  </form>
 	  {% endif %}
 	</div>
