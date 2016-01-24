@@ -10,8 +10,8 @@ def home():
     return render_template("home.html")
 
 
-@app.route("/test2")
-def test2():
+@app.route("/error")
+def error():
     return render_template("error.html")
 
 
@@ -123,12 +123,10 @@ def addavailability():
         teacher_id = session['id']
         date = request.form['date']
         time = request.form['time']
-        if time = 'afternoon':
-            sections = 
-        else:
-            sections =
-        database_utils.set_teacher_availability(teacher_id, date, time, sections)
+        database_utils.set_teacher_availability(teacher_id, date, time)
         return redirect("teacherschedule")
+    else:
+        return redirect("error")
 if __name__ == "__main__":
     app.debug = True
     app.secret_key = "Password"
