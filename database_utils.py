@@ -198,20 +198,6 @@ def set_teacher_availability(TID, date, time):
     conn.close()
 
 
-def get_teacher_availability(TID):
-    conn = sqlite3.connect("data.db")
-    c = conn.cursor()
-    q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "availability_database"'
-    c.execute(q)
-    if not c.fetchone():
-        conn.close()
-        return []
-    q = 'SELECT date, time FROM availability_database WHERE TEACHER_ID = ?'
-    availability = c.execute(q, (TID,))
-    conn.close()
-    return availability
-
-
 def get_all_available(date, school):
     conn = sqlite3.connect("data.db")
     c = conn.cursor()
