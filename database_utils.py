@@ -160,6 +160,7 @@ Teacher Availablity Database - Stores when teachers are available
 +------------+------+-------+----------+
 """
 
+
 def set_teacher_availability(TID, date, time, num_sections):
     conn = sqlite3.connect("data.db")
     c = conn.cursor()
@@ -175,6 +176,7 @@ def set_teacher_availability(TID, date, time, num_sections):
     c.execute(q, (TID, date, time, num_sections))
     conn.commit()
     conn.close()
+
 
 def get_teacher_availability(TID):
     conn = sqlite3.connect("data.db")
@@ -196,9 +198,27 @@ Parent Teacher Conference Database - Stores the different Appointments
 +-----------+------------+------+------+----------------+
 | Parent_ID | Teacher_ID | Date | Time | Section Number |
 +-----------+------------+------+------+----------------+
-| INT       | INT        |      |      | INT            |
+| INT       | INT        | TEXT | TEXT | INT            |
 +-----------+------------+------+------+----------------+
 """
+
+def make_appointment(PID, TID, date, time, section_num):
+    conn = sqlite3.connect("data.db")
+    c = conn.cursor()
+    q = 'CREATE TABLE IF NOT EXISTS appointment_database (parent_id INT, teacher_id INT, date TEXT, time TEXT, section INT)'
+    c.execute(q)
+    q = 'SELECT teacher_id, date, time, section FROM appointment_database'
+    appointments = c.execute(q)
+    for entry in appointments:
+        if (entry[0] == TID and entry[1] == date and entry[2] == time and entry[3] == section_num):
+            conn.close()
+            return [False, TID]
+    q = 'INSERT INTO appointment_database (parent_id, teacher_id, date, time, section) VALUES (?, ?, ?, ?, ?)'
+    c.execute(q, (PID, TID, date, time, section_num))
+    conn.commit()
+    conn.close()
+    return [True, -1]
+
 
 def get_teacher_appointments(TID):
     conn = sqlite3.connect("data.db")
@@ -217,6 +237,7 @@ def get_teacher_appointments(TID):
         entry.extend(name)
     conn.close()
     return appointments
+
 
 def get_parent_appointments(PID):
     conn = sqlite3.connect("data.db")
