@@ -91,15 +91,39 @@ def teacher_create():
         return render_template("teachercreate.html", schools=school_list)
 
 
-@app.route("/parentselect", methods=['GET', 'POST'])
+@app.route("/parentselect")
 def parentselect():
     if 'type' in session and session['type'] == "parent":
-        if request.method == 'POST':
-            # Form Stuff
-            return render_template("parentselect.html")
-        else:
-            # do stuff with session['id']
-            return render_template("parentselect.html")
+        session['step'] = 0
+        school_list = database_utils.get_schools()
+        return render_template("parentselect.html", schools=school_list)
+    else:
+        return redirect("error")
+
+
+@app.route("/findTeachers", methods=['POST'])
+def findTeachers():
+    if request.method == 'POST' and 'type' in session and session['type'] == "parent" and id in session:
+        date = request.form('date')
+        school = request.form('school')
+        availableTeachers = database_utils.get_all_available(date, school)
+        session['step'] = 1
+        session['date'] = date
+        return render_template("parentselect.html", teachers=availableTeachers)
+    else:
+        return redirect("error")
+
+
+@app.route("/findTeachers", methods=['POST'])
+def findTeachers():
+    if request.method == 'POST' and 'type' in session and session['type'] == "parent" and id in session:
+        teachers = request.form('teachers')
+        date = session['date']
+        teacherschedules = []
+        for teacher in teachers:
+            teacherschedule.append(database_utils.get_teacher_appointments(teacher, date))
+        session['step'] = 2
+        return render_template("parentselect.html", appoitments=teacherschedules)
     else:
         return redirect("error")
 
@@ -129,6 +153,8 @@ def addavailability():
         return redirect("teacherschedule")
     else:
         return redirect("error")
+
+
 if __name__ == "__main__":
     app.debug = True
     app.secret_key = "Password"
