@@ -298,7 +298,10 @@ def get_teacher_name(TID):
         conn.close()
         return []
     q = 'SELECT first_name, last_name FROM teacher_database WHERE TEACHER_ID = ?'
-    name = c.execute(q, (TID,))
+    res = c.execute(q, (TID,)).fetchone()
+    name = []
+    for entry in res:
+        name.append(entry)
     conn.close()
     return name
     
