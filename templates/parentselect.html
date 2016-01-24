@@ -39,30 +39,45 @@
 
 
       <td rowspan="2" class="bg2" id="outer_bg1" style="font-family:chalktwo; color:white;">
-        <div>
+        <div class="form-group">
           <h3><u> Appointment Times </u></h3>
 
-          {%+ if session['step']==0 %}
-          <form method="POST" action="findTeachers">
-  <input type="date" name="date" id="black" min="2016/01/01" max="2020/12/31" placeholder="YYYY/MM/DD">
-  <select class="form-control input-lg" id="school" name="school" tabindex="5"required>
-    <option value="Select School" selected disabled>Select School</option>
-    {% endif %}
-
-    {%+ if session['step']==1 %}
-    <form method="POST" action="findAppointments">
-  {% for teacher in teachers %}
-  <input type="checkbox" name="teachers" value={{teacher}}>{{teacher}}<br>
-  {% endfor %}
-  <input type="submit" value="Submit">
-</form>
-    {% endif %}
-
-{%+ if session['step']==1 %}
-  <form method="POST" action="scheduleAppointments">
-  {{appointments}}
-</form>
-    {% endif %}
+          {% if step == 0 %}
+	  <p> Choose a Date and School</p>
+          <form role="form" id="black" method="POST" action="findTeachers">
+	    <div class="form-group">
+	      <input type="date" name="date" id="black" min="2016/01/01" max="2020/12/31" placeholder="YYYY/MM/DD">
+	    </div>
+	    <div class="form-group">
+	      <select id="school" name="school" tabindex="5"required>
+		<option value="Select School" selected disabled>Select School</option>
+		{% for school in schools %}
+	      <option value={{school}}>{{school}}</option>
+	      {% endfor %}
+	      </select>
+	    </div>
+	    <div>
+	      <input type="submit" value="Submit"></input>
+	    </div>
+	  </form>
+	  {% endif %}
+	  
+	  {% if step == 1 %}
+	  <form method="POST" action="findAppointments">
+	    {% for teacher in teachers %}
+	    <input type="checkbox" name="teachers" value={{teacher}}>{{teacher}}<br>
+	    {% endfor %}
+	    <input type="submit" value="Submit">
+	  </form>
+	  {% endif %}
+	      
+	  {% if step == 2 %}
+	  <form method="POST" action="scheduleAppointments">
+	    {{appointments}}
+	  </form>
+	  {% endif %}
+	</div>
+      </td>
 
 
 <!--
@@ -173,7 +188,7 @@ session['step'] == 2
   
 </div>
 
-
+-->
 
 {% endblock %}
-B
+

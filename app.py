@@ -95,8 +95,9 @@ def teacher_create():
 def parentselect():
     if 'type' in session and session['type'] == "parent":
         session['step'] = 0
+        step = session['step']
         school_list = database_utils.get_schools()
-        return render_template("parentselect.html", schools=school_list)
+        return render_template("parentselect.html", step = step, schools=school_list)
     else:
         return redirect("error")
 
@@ -108,8 +109,9 @@ def findTeachers():
         school = request.form('school')
         availableTeachers = database_utils.get_all_available(date, school)
         session['step'] = 1
+        step = session['step']
         session['date'] = date
-        return render_template("parentselect.html", teachers=availableTeachers)
+        return render_template("parentselect.html", step = step, teachers=availableTeachers)
     else:
         return redirect("error")
 
@@ -123,7 +125,8 @@ def findAppointments():
         for teacher in teachers:
             teacherschedule.append(database_utils.get_teacher_appointments(teacher, date))
         session['step'] = 2
-        return render_template("parentselect.html", appoitments=teacherschedules)
+        step = session['step']
+        return render_template("parentselect.html", step = step, appoitments=teacherschedules)
     else:
         return redirect("error")
 
