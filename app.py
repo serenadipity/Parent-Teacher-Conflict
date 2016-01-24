@@ -12,7 +12,7 @@ def home():
 
 @app.route("/test2")
 def test2():
-    return render_template("test2.html")
+    return render_template("error.html")
 
 
 @app.route("/parentlogin", methods=['GET', 'POST'])
@@ -26,7 +26,7 @@ def parent_login():
             session['id'] = verifylogin
             return redirect("parentschedule")
         else:
-            return render_template("parentlogin.html", error=True) 
+            return render_template("parentlogin.html", error=True)
     else:
         return render_template("parentlogin.html")
 
@@ -116,6 +116,19 @@ def teacherschedule():
     else:
         return "Error, Something went wrong. Link to home" #Same page as method above
 
+
+@app.route("/addavailability", methods=['POST'])
+def addavailability():
+    if request.method == 'POST' and 'type' in session and session['type'] == "teacher" and id in session:
+        teacher_id = session['id']
+        date = request.form['date']
+        time = request.form['time']
+        if time = 'afternoon':
+            sections = 
+        else:
+            sections =
+        database_utils.set_teacher_availability(teacher_id, date, time, sections)
+        return redirect("teacherschedule")
 if __name__ == "__main__":
     app.debug = True
     app.secret_key = "Password"
