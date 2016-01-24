@@ -122,6 +122,23 @@ def valid_create_teacher(username, password, repeat_password, first_name, last_n
         return [True, "Successful Account Creation"]
 
 
+def get_dates():
+    conn = sqlite3.connect("data.db")
+    c = conn.cursor()
+    q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "availability_database"'
+    c.execute(q)
+    if not c.fetchone():
+        conn.close()
+        return []
+    q = 'SELECT DISTINCT date FROM availability_database'
+    dates = c.execute(q)
+    date_list = []
+    for date in dates:
+        date_list.append(date[0])
+    conn.close()
+    return date_list
+
+
 def get_schools():
     conn = sqlite3.connect("data.db")
     c = conn.cursor()
