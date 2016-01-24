@@ -24,9 +24,9 @@ def parent_login():
         if verifylogin != -1:
             session['type'] = 'parent'
             session['id'] = verifylogin
-            return url_for("parentschedule")
+            return redirect("parentschedule")
         else:
-            return render_template("parentlogin.html")  # Failure to Login, Ginga
+            return render_template("parentlogin.html", error=True) 
     else:
         return render_template("parentlogin.html")
 
@@ -42,9 +42,10 @@ def parent_create():
         email = request.form['email'].lower()
         result = database_utils.valid_create_parent(username, password, repeat_password, first_name, last_name, email)
         if result[0]:
-            return result[1]
+            return redirect("parentlogin")
         else:
-            return "Error:" + result[1]
+            message = result[1]
+            return render_template("parentcreate.html",error = True, message = message)
     else:
         return render_template("parentcreate.html")
 
@@ -58,9 +59,9 @@ def teacher_login():
         if verifylogin != -1:
             session['type'] = "teacher"
             session['id'] = verifylogin
-            return url_for("teacherschedule")
+            return redirect("teacherschedule")
         else:
-            return render_template("teacherlogin.html")  # "Failure to login" Ginga Thing to Show This
+            return render_template("teacherlogin.html", error = True)  # "Failure to login" Ginga Thing to Show This
     else:
         return render_template("teacherlogin.html")
 
@@ -80,9 +81,11 @@ def teacher_create():
         room = request.form['room']
         result = database_utils.valid_create_teacher(username, password, repeat_password, first_name, last_name, email, school, room)
         if result[0]:
-            return render_template("teacherlogin.html")  # result[1] Ginga Thing
+             return redirect("teacherlogin")
         else:
-            return render_template("teacher_create.html") # result[1] Ginga Thing
+            message = result[1]
+            school_list = database_utils.get_schools()
+            return render_template("teachercreate.html", schools = school_list, error = True, message = message) # result[1] Ginga Thing
     else:
         school_list = database_utils.get_schools()
         return render_template("teachercreate.html", schools = school_list)

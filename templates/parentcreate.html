@@ -24,6 +24,11 @@
 	    <h1 class="center2">Parent Sign Up</h1>
 	  </div>
 	  <hr>
+	  {% if error %}
+	  <div class="alert alert-danger">
+	      <p id="error">{{message}}</p>
+	  </div>
+	  {% endif %}
 	  <div class="row">
 	    <div class="col-xs-12 col-sm-6 col-md-6">
 	      <div class="form-group">

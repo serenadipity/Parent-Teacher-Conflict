@@ -89,6 +89,10 @@ th, td {
     
 }
 
+#error {
+    font-size: 20px;
+}
+
 #outer {
     width: 1000px;
 }
