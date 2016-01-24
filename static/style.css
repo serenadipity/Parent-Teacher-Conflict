@@ -97,6 +97,16 @@ th, td {
     width: 1000px;
 }
 
+#inner {
+    display:block;
+    height: 300px;
+    overflow-y:scroll;
+}
+
+#inner_row {
+    height:10px;
+}
+
 td {
     height: 400px;
     width: 500px;
