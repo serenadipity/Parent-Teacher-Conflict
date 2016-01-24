@@ -65,7 +65,7 @@
 	  {% if step == 1 %}
 	  <form method="POST" action="findAppointments">
 	    {% for teacher in teachers %}
-	    <input type="checkbox" name="teachers" value={{teacher[1]}}>{{teacher[1]}}<br>
+	    <input type="checkbox" name="teachers" value={{teacher[0]}}>{{teacher[1]}} {{teacher[2]}}<br>
 	    {% endfor %}
 	    <input type="submit" value="Submit">
 	  </form>
