@@ -264,7 +264,6 @@ def get_teacher_appointments(TID, date):
         q = 'SELECT first_name, last_name FROM parent_database WHERE PARENT_ID = ?'
         extra = c.execute(q, (PID,))
         entry.extend(extra)
-        entry.append(TID)
     conn.close()
     return appointments
 
