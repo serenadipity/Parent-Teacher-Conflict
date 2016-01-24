@@ -114,8 +114,8 @@ def findTeachers():
         return redirect("error")
 
 
-@app.route("/findTeachers", methods=['POST'])
-def findTeachers():
+@app.route("/findAppointments", methods=['POST'])
+def findAppointments():
     if request.method == 'POST' and 'type' in session and session['type'] == "parent" and id in session:
         teachers = request.form('teachers')
         date = session['date']
