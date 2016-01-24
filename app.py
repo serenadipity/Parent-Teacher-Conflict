@@ -133,7 +133,7 @@ def findAppointments():
         return redirect("error")
 
 
-@app.route("/parentscheduleappointments", methods=['POST'])
+@app.route("/parentScheduleAppointments", methods=['POST'])
 def parentscheduleappointments():
     if request.method == 'POST' and 'type' in session and session['type'] == 'parent' and 'id' in session:
         PID = session['id']
