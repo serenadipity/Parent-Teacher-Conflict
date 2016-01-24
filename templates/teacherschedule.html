@@ -36,7 +36,7 @@
       <td class="bg1" id="outer_bg1"  style="font-family:chalktwo; color:white;">
         <h3><u> Welcome Teacher! </u></h3>
         <p id="teacherinfo">
-          Info: info <!-- Teacher Name Jinga-->
+          Add a time for when you are available:<!-- Teacher Name Jinga-->
           <br>
           <form  action="/addavailablitiy">
 	    <input type="date" name="date" id="black" min="2016/01/01" max="2020/12/31" placeholder="YYYY/MM/DD">
@@ -44,10 +44,14 @@
 	      <option value="afternoon"> Afternoon </option>
 	      <option value="evening"> Evening </option>
 	    </select>
-	    <input type="submit" value="Add">
+	    <input id="black" type="submit" value="Add">
+	  </form>
+	  <p> Select a Day to View Times </p>
+	  <form action="appointment">
+	    <input type="date" name="date" id="black" min="2016/01/01" max="2020/12/31" placeholder="YYYY/MM/DD">
+	    <input id="black" type="submit" value="View">
 	  </form>
           <br>
-          Info: info
         </p>
       </td>
       <td rowspan="2" class="bg2" id="outer_bg1" style="font-family:chalktwo; color:white;">
