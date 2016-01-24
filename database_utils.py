@@ -241,7 +241,7 @@ def make_appointment(PID, TID, date, time, section_num):
     return [True, -1]
 
 
-def get_teacher_appointments(TID):
+def get_teacher_appointments(TID, date):
     conn = sqlite3.connect("data.db")
     c = conn.cursor()
     q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "appointment_database"'
@@ -249,8 +249,8 @@ def get_teacher_appointments(TID):
     if not c.fetchone():
         conn.close()
         return []
-    q = 'SELECT parent_id, date, time, section_number FROM appointment_database WHERE TEACHER_ID = ?'
-    appointments = c.execute(q, (TID,))
+    q = 'SELECT parent_id, date, time, section_number FROM appointment_database WHERE TEACHER_ID = ? AND DATE = ?'
+    appointments = c.execute(q, (TID,date))
     for entry in appointments:
         PID = entry[0]
         q = 'SELECT first_name, last_name FROM parent_database WHERE PARENT_ID = ?'
@@ -260,7 +260,7 @@ def get_teacher_appointments(TID):
     return appointments
 
 
-def get_parent_appointments(PID):
+def get_parent_appointments(PID, date):
     conn = sqlite3.connect("data.db")
     c = conn.cursor()
     q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "appointment_database"'
@@ -268,8 +268,8 @@ def get_parent_appointments(PID):
     if not c.fetchone():
         conn.close()
         return []
-    q = 'SELECT teacher_id, date, time, section_number FROM appointment_database WHERE PARENT_ID = ?'
-    appointments = c.execute(q, (PID,))
+    q = 'SELECT teacher_id, date, time, section_number FROM appointment_database WHERE PARENT_ID = ? AND DATE = ?'
+    appointments = c.execute(q, (PID,date))
     for entry in appointments:
         TID = entry[0]
         q = 'SELECT first_name, last_name FROM teacher_database WHERE TEACHER_ID = ?'
