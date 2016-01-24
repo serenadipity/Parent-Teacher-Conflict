@@ -24,9 +24,9 @@ def parent_login():
         if verifylogin != -1:
             session['type'] = 'parent'
             session['id'] = verifylogin
-            return redirect(url_for("parentschedule"))
+            return redirect("parentschedule")
         else:
-            return render_template("parentlogin.html", error=True)  # Failure to Login, Ginga
+            return render_template("parentlogin.html", error=True) 
     else:
         return render_template("parentlogin.html")
 
@@ -42,7 +42,7 @@ def parent_create():
         email = request.form['email'].lower()
         result = database_utils.valid_create_parent(username, password, repeat_password, first_name, last_name, email)
         if result[0]:
-            return redirect(url_for("parentlogin"))
+            return redirect("parentlogin")
         else:
             message = result[1]
             return render_template("parentcreate.html",error = True, message = message)
@@ -59,7 +59,7 @@ def teacher_login():
         if verifylogin != -1:
             session['type'] = "teacher"
             session['id'] = verifylogin
-            return redirect(url_for("teacherschedule"))
+            return redirect("teacherschedule")
         else:
             return render_template("teacherlogin.html", error = True)  # "Failure to login" Ginga Thing to Show This
     else:
@@ -81,7 +81,7 @@ def teacher_create():
         room = request.form['room']
         result = database_utils.valid_create_teacher(username, password, repeat_password, first_name, last_name, email, school, room)
         if result[0]:
-             return redirect(url_for("teacherlogin"))
+             return redirect("teacherlogin")
         else:
             message = result[1]
             school_list = database_utils.get_schools()
