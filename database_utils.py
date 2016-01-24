@@ -195,6 +195,24 @@ def get_teacher_availability(TID):
     return availability
 
 
+def get_all_available(date, school):
+    conn = sqlite3.connect("data.db")
+    c = conn.cursor()
+    q = 'SELECT teacher_id FROM availability_database WHERE DATE = ?'
+    res = c.execute(q, (date,))
+    teach = []
+    for entry in res:
+        teach.append(entry[0])
+    q = 'SELECT teacher_id, first_name, last_name FROM teacher_database WHERE SCHOOL = ?'
+    res = c.execute(q, (school,))
+    teachers = {}
+    for entry in res:
+        if entry[0] in teach:
+            teachers[entry[0]] = entry[1:]
+    return teachers
+
+    
+
 # Appointment Database --------------------------------------------------------------------------------------------------------------------------------------
 """
 Parent Teacher Conference Database - Stores the different Appointments
