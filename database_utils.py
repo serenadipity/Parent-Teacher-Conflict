@@ -27,14 +27,14 @@ def valid_parent_login(username, password):
     c.execute(q)
     if not c.fetchone():
         conn.close()
-        return False
+        return -1
     q = 'SELECT password, salt FROM parent_database WHERE username = ?'
     pepper_and_salt = c.execute(q, (username,)).fetchone()
     if pepper_and_salt and sha512((password + pepper_and_salt[1]) * 10000).hexdigest() == pepper_and_salt[0]:
         q = "SELECT parent_id FROM parent_database WHERE username = ?"
         id = c.execute(q, (username,)).fetchone()
         conn.close()
-        return id
+        return id[0]
     conn.close()
     return -1
 
@@ -87,15 +87,14 @@ def valid_teacher_login(username, password):
     c.execute(q)
     if not c.fetchone():
         conn.close()
-        return False
+        return -1
     q = 'SELECT password, salt FROM teacher_database WHERE username = ?'
     pepper_and_salt = c.execute(q, (username,)).fetchone()
-    conn.close()
     if pepper_and_salt and sha512((password + pepper_and_salt[1]) * 10000).hexdigest() == pepper_and_salt[0]:
         q = "SELECT teacher_id FROM teacher_database WHERE username = ?"
         id = c.execute(q, (username,)).fetchone()
         conn.close()
-        return id
+        return id[0]
     conn.close()
     return -1
 
