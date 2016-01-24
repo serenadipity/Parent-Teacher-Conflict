@@ -266,7 +266,7 @@ def get_teacher_appointments(TID, date):
     if not c.fetchone():
         conn.close()
         return []
-    q = 'SELECT parent_id, date, time, section_number FROM appointment_database WHERE TEACHER_ID = ? AND DATE = ?'
+    q = 'SELECT parent_id, time, section_number FROM appointment_database WHERE TEACHER_ID = ? AND DATE = ?'
     appointments = c.execute(q, (TID,date))
     for entry in appointments:
         PID = entry[0]
@@ -285,7 +285,7 @@ def get_parent_appointments(PID, date):
     if not c.fetchone():
         conn.close()
         return []
-    q = 'SELECT teacher_id, date, time, section_number FROM appointment_database WHERE PARENT_ID = ? AND DATE = ?'
+    q = 'SELECT teacher_id, time, section_number FROM appointment_database WHERE PARENT_ID = ? AND DATE = ?'
     appointments = c.execute(q, (PID,date))
     for entry in appointments:
         TID = entry[0]
