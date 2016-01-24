@@ -54,7 +54,7 @@ def thingToDo(dictOfThings, date):
     TID = dictOfThings.keys()
     cleanData = {}
 
-    if not (dictOfThings and dictOfThings.keys() and dictOfThings[dictOfThings.keys()[0]].length > 3):
+    if not (dictOfThings and dictOfThings.keys() and len(dictOfThings.values()[0]) > 3):
         return ""
     
     hour = 5
