@@ -24,7 +24,7 @@ def parent_login():
         if verifylogin != -1:
             session['type'] = 'parent'
             session['id'] = verifylogin
-            return redirect("parentschedule")
+            return redirect("parentselect")
         else:
             return render_template("parentlogin.html", error=True)
     else:
