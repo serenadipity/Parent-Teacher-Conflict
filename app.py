@@ -132,6 +132,11 @@ def findAppointments():
         return redirect("error")
 
 
+@app.route("/parentscheduleappointments", methods=['POST'])
+def parentscheduleappointments():
+    if request.method == 'POST' and 'type' in session and session['type'] == 'parent' and 'id' in session:
+        
+
 @app.route("/parentschedule", methods=['GET', 'POST'])
 def parentschedule():
     if 'type' in session and session['type'] == "parent":
