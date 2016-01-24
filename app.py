@@ -135,7 +135,17 @@ def findAppointments():
 @app.route("/parentscheduleappointments", methods=['POST'])
 def parentscheduleappointments():
     if request.method == 'POST' and 'type' in session and session['type'] == 'parent' and 'id' in session:
-        
+        PID = session['id']
+        date = request.form['date']
+        time = request.form['time']
+        for i in range(50):
+            TID = request.form[str(i)]
+            if TID != -1:
+                database_utils.make_appointment(PID, TID, date, time, i)
+        return redirect("parentschedule")
+    else:
+        return redirect("error")
+    
 
 @app.route("/parentschedule", methods=['GET', 'POST'])
 def parentschedule():
