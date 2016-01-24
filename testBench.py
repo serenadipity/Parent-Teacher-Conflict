@@ -38,6 +38,7 @@ class testBench(unittest.TestCase):
     def test10_teacher_login(self):
         r = database_utils.valid_teacher_login("Alpha2", "Aa2!Aa2!2")
         self.assertEqual(r, -1)
+    
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(testBench)

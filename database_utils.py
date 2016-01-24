@@ -201,6 +201,11 @@ def set_teacher_availability(TID, date, time):
 def get_all_available(date, school):
     conn = sqlite3.connect("data.db")
     c = conn.cursor()
+    q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "availability_database"'
+    c.execute(q)
+    if not c.fetchone():
+        conn.close()
+        return []
     q = 'SELECT teacher_id FROM availability_database WHERE DATE = ?'
     res = c.execute(q, (date,))
     teach = []
