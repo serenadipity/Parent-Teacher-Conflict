@@ -104,7 +104,7 @@ def parentselect():
 
 @app.route("/findTeachers", methods=['POST'])
 def findTeachers():
-    if request.method == 'POST' and 'type' in session and session['type'] == "parent" and id in session:
+    if request.method == 'POST' and 'type' in session and session['type'] == "parent" and 'id' in session:
         date = request.form('date')
         school = request.form('school')
         availableTeachers = database_utils.get_all_available(date, school)
@@ -118,7 +118,7 @@ def findTeachers():
 
 @app.route("/findAppointments", methods=['POST'])
 def findAppointments():
-    if request.method == 'POST' and 'type' in session and session['type'] == "parent" and id in session:
+    if request.method == 'POST' and 'type' in session and session['type'] == "parent" and 'id' in session:
         teachers = request.form('teachers')
         date = session['date']
         teacherschedules = []
@@ -129,6 +129,23 @@ def findAppointments():
         return render_template("parentselect.html", step = step, appoitments=teacherschedules)
     else:
         return redirect("error")
+
+
+"""
+@app.route("/parentschedule", methods=['GET', 'POST'])
+def teacherschedule():
+    if 'type' in session and session['type'] == "parent":
+        if request.method == 'POST':
+            parent_id = session['id']
+            date = request.form['date']
+            appointments = database_utils.get_parent_appointments(teacher_id, date)
+            return render_template("parentschedule.html", appointment=appointments)
+        else:
+            # do stuff with session['id']
+            return render_template("teacherschedule.html")
+    else:
+        return redirect("error")
+"""
 
 
 @app.route("/teacherschedule", methods=['GET', 'POST'])
@@ -148,7 +165,7 @@ def teacherschedule():
 
 @app.route("/addavailability", methods=['POST'])
 def addavailability():
-    if request.method == 'POST' and 'type' in session and session['type'] == "teacher" and id in session:
+    if request.method == 'POST' and 'type' in session and session['type'] == "teacher" and 'id' in session:
         teacher_id = session['id']
         date = request.form['date']
         time = request.form['time']
