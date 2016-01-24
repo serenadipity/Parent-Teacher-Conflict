@@ -33,7 +33,7 @@ def createSchedule(listOfThings):
         stuffToWorkWith[alist[2]] = alist[3:]
     stringer = ""
     stringer += "<table>\n"
-    stringer += "<tr> <th> TIME </th> <th colspan='2'> Parent Name </th> </tr>\n"
+    stringer += "<tr> <th> TIME </th> <th colspan='2'> Name </th> </tr>\n"
     for counter in range(50):
         stringer += "<tr>"
         a = (hour + (minutes + counter * 3) / 60) / 10

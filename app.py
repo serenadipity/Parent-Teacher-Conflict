@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for
-import database_utils
+import database_utils, utils
 
 app = Flask(__name__)
 
@@ -131,21 +131,20 @@ def findAppointments():
         return redirect("error")
 
 
-"""
 @app.route("/parentschedule", methods=['GET', 'POST'])
-def teacherschedule():
+def parentschedule():
     if 'type' in session and session['type'] == "parent":
         if request.method == 'POST':
             parent_id = session['id']
             date = request.form['date']
-            appointments = database_utils.get_parent_appointments(teacher_id, date)
-            return render_template("parentschedule.html", appointment=appointments)
+            appointments = database_utils.get_parent_appointments(parent_id, date)
+            tablestring = utils.createSchedule(appointments)
+            return render_template("parentschedule.html", appointment=tablestring)
         else:
             # do stuff with session['id']
             return render_template("teacherschedule.html")
     else:
         return redirect("error")
-"""
 
 
 @app.route("/teacherschedule", methods=['GET', 'POST'])
@@ -155,7 +154,8 @@ def teacherschedule():
             teacher_id = session['id']
             date = request.form['date']
             appointments = database_utils.get_teacher_appointments(teacher_id, date)
-            return render_template("teacherschedule.html", appointment=appointments)
+            tablestring = utils.createSchedule(appointments)
+            return render_template("teacherschedule.html", appointment=tablestring)
         else:
             # do stuff with session['id']
             return render_template("teacherschedule.html")
