@@ -142,7 +142,7 @@ def parentschedule():
             return render_template("parentschedule.html", appointment=tablestring)
         else:
             # do stuff with session['id']
-            return render_template("teacherschedule.html")
+            return render_template("parentschedule.html")
     else:
         return redirect("error")
 
