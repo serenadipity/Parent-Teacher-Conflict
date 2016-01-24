@@ -305,4 +305,19 @@ def get_teacher_name(TID):
     conn.close()
     return name
     
-
+def get_time(date):
+    conn = sqlite3.connect("data.db")
+    c = conn.cursor()
+    q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "availability_database"'
+    c.execute(q)
+    if not c.fetchone():
+        conn.close()
+        return []
+    q = 'SELECT time FROM availability_database WHERE DATE = ?'
+    times = c.execute(q, (date,)).fetchone()
+    time = []
+    for entry in times:
+        time.append(entry)
+    conn.close()
+    return time
+    
