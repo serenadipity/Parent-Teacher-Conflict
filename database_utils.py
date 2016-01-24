@@ -216,7 +216,7 @@ def get_all_available(date, school):
     teachers = []
     for entry in res:
         if entry[0] in teach:
-            teachers.append[entry]
+            teachers.append(entry)
     return teachers
 
     
