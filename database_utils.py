@@ -160,6 +160,22 @@ Teacher Availablity Database - Stores when teachers are available
 +------------+------+-------+----------+
 """
 
+def set_teacher_availability(TID, date, time, num_sections):
+    conn = sqlite3.connect("data.db")
+    c = conn.cursor()
+    q = 'CREATE TABLE IF NOT EXISTS availability_database (teacher_id INT, date TEXT, time TEXT, sections INT)'
+    c.execute(q)
+    q = 'SELECT teacher_id, date FROM availability_database'
+    prev = c.execute(q)
+    for entry in prev:
+        if (entry[0] == TID and entry[1] == date):
+            q = 'DELETE FROM availability_database WHERE TEACHER_ID = ? AND DATE = ?'
+            c.execute(q, (TID, date))
+    q = 'INSERT INTO availability_database (teacher_id, date, time, sections) VALUES (?, ?, ?, ?)'
+    c.execute(q, (TID, date, time, num_sections))
+    conn.commit()
+    conn.close()
+
 def get_teacher_availability(TID):
     conn = sqlite3.connect("data.db")
     c = conn.cursor()

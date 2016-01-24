@@ -18,3 +18,4 @@ def valid_data(username, password, repeat_password, email, users):
         return [False, "Your password must include a lowercase letter, an uppercase letter, a number, and at least of one the following symbols: '!@#$%^*'."]
     return [True, "Your information has been validated."]
 
+
