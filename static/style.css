@@ -115,6 +115,10 @@ td {
     width: 100px;
 }
 
+#black {
+    color:black;
+}
+
 #outer_bg1 {
     background: url(imgs/chalkboard9.png);  
     -webkit-background-size: contain;

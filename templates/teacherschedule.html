@@ -31,9 +31,9 @@
         <p id="teacherinfo">
           Info: info <!-- Teacher Name Jinga-->
           <br>
-          <form action="/addavailablitiy">
-	    <input type="date" name="date">
-	    <select name="time">
+          <form  action="/addavailablitiy">
+	    <input type="date" name="date" id="black" min="2016/01/01" max="2020/12/31" placeholder="YYYY/MM/DD">
+	    <select id="black" name="time">
 	      <option value="afternoon"> Afternoon </option>
 	      <option value="evening"> Evening </option>
 	    </select>
@@ -77,14 +77,14 @@
         </div>
       </td>
     </tr>
-    <tr>
+<!--    <tr>
       <td class="bg1" id="outer_bg1" style="font-family:chalktwo; color:white;"> 
         <div>
-  <!-- For more information on a specific appointment -->
+  <!-- For more information on a specific appointment 
           <p id="parentcomment"> Blah </p>
           <p id="teachercomment"> Blah Blah </p>
   
-          <form>
+          <form id="black">
           <input type="hidden" name="appointment" value="appointment_id">
           Comment: <input type="text" name="tcomment"> <input type="submit" value="Comment">
           </form>
@@ -92,7 +92,7 @@
     </td>
 
 
-    </tr>
+    </tr> -->
   </table>
 </center>
 </div>
