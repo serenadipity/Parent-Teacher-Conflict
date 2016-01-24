@@ -213,10 +213,10 @@ def get_all_available(date, school):
         teach.append(entry[0])
     q = 'SELECT teacher_id, first_name, last_name FROM teacher_database WHERE SCHOOL = ?'
     res = c.execute(q, (school,))
-    teachers = {}
+    teachers = []
     for entry in res:
         if entry[0] in teach:
-            teachers[entry[0]] = entry[1:]
+            teachers.append[entry]
     return teachers
 
     
