@@ -111,7 +111,6 @@ def teacherschedule():
             teacher_id = session['id']
             date = request.form['date']
             appointments = database_utils.get_teacher_appointments(teacher_id, date)
-            appointments = [["dsfsdfds","s dfsdfsdfds","sdsfsdfds","sdfdsfsds"],["ddsfsdfsd","sdfsdfdsfdsfdsd","dsdfdsfdsfsd","dsfsdfsd"]]
             return render_template("teacherschedule.html", appointment=appointments)
         else:
             # do stuff with session['id']
