@@ -91,7 +91,7 @@ def valid_teacher_login(username, password):
     q = 'SELECT password, salt FROM teacher_database WHERE username = ?'
     pepper_and_salt = c.execute(q, (username,)).fetchone()
     conn.close()
-    if pepper_and_salt or sha512((password + pepper_and_salt[1]) * 10000).hexdigest() == pepper_and_salt[0]:
+    if pepper_and_salt and sha512((password + pepper_and_salt[1]) * 10000).hexdigest() == pepper_and_salt[0]:
         q = "SELECT teacher_id FROM teacher_database WHERE username = ?"
         id = c.execute(q, (username,)).fetchone()
         conn.close()
