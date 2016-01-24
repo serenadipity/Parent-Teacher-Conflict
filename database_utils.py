@@ -287,5 +287,19 @@ def get_parent_appointments(PID, date):
     conn.close()
     return appointments
 
+#Miscellaneous------------------------------------
 
+def get_teacher_name(TID):
+    conn = sqlite3.connect("data.db")
+    c = conn.cursor()
+    q = 'SELECT name FROM sqlite_master WHERE TYPE = "table" AND NAME = "teacher_database"'
+    c.execute(q)
+    if not c.fetchone():
+        conn.close()
+        return []
+    q = 'SELECT first_name, last_name FROM teacher_database WHERE TEACHER_ID = ?'
+    name = c.execute(q, (TID,))
+    conn.close()
+    return name
+    
 
