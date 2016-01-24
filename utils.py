@@ -38,8 +38,8 @@ def createSchedule(listOfThings):
         stringer += "<tr>"
         a = (hour + (minutes + counter * 3) / 60) / 10
         b = (hour + (minutes + counter * 3) / 60) % 10
-        c = (minutes + counter * 3) / 10
-        d = (minutes + counter * 3) % 10
+        c = (minutes + counter * 3) % 60 / 10
+        d = (minutes + counter * 3) % 60 % 10
         stringer += "<td> %d%d:%d%d </td>" % (a, b, c, d)
         addition = "<td></td><td></td>"
         if counter in stuffToWorkWith.keys():
@@ -48,3 +48,43 @@ def createSchedule(listOfThings):
         stringer += "</tr>\n"
     stringer += "</table\n"
     return stringer
+
+
+def thingToDo(dictOfThings, date):
+    TID = dictOfThings.keys()
+    cleanData = {}
+
+    hour = 5
+    minutes = 30
+    if dictOfThings.values()[0][3] == 'afternoon':
+        hour = 1
+        minutes = 0
+    
+    stringer = "<form><table border='1'>\n"
+    stringer += '<input type="hidden" name="time" value="%s">\n' % (dictOfThings.values()[0][3])
+    stringer += '<input type="hidden" name="date" value="%s">\n' % (date)
+    stringer += "<tr> <th> TIME </th> <th> N/A </th>"
+    for key in TID:
+        stringer += "<th> %s %s </th>" % (dictOfThings[key][0], dictOfThings[key][1])
+        stuffToWorkWith = {}
+        for alist in dictOfThings[key][2:]:
+            stuffToWorkWith[alist[2]] = alist[3:]
+        cleanData[key] = stuffToWorkWith
+    stringer += "</tr>"
+    for counter in range(50):
+        stringer+= "<tr>"
+        a = (hour + (minutes + counter * 3) / 60) / 10
+        b = (hour + (minutes + counter * 3) / 60) % 10
+        c = (minutes + counter * 3) % 60 / 10
+        d = (minutes + counter * 3) % 60 % 10
+        stringer += "<td> %d%d:%d%d </td>" % (a, b, c, d)
+        addition = "<td> <input type='radio' name='%s' value='-1' checked> </td>" % (counter)
+        for key in TID:
+            if counter in cleanData[key].keys():
+                addition += "<td> %s %s </td>" % (cleanData[key][counter][0], cleanData[key][counter][0])
+            else:
+                addition += "<td><input type='radio' name='%s' value='%s'></td>" % (counter, key)
+        stringer += addition + "</tr>\n"
+    stringer += "</table> <input type='submit' value='Schedule'> </form>"
+    return stringer
+
