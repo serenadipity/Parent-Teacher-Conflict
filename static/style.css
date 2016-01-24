@@ -101,6 +101,7 @@ th, td {
     border: 1px solid transparent;
     display:block;
     height: 300px;
+    padding: 20px;
     overflow-y:scroll;
 }
 
