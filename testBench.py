@@ -38,6 +38,9 @@ class testBench(unittest.TestCase):
     def test10_teacher_login(self):
         r = database_utils.valid_teacher_login("Alpha2", "Aa2!Aa2!2")
         self.assertEqual(r, -1)
+    def test11_make_appointment(self):
+        r = database_utils.appointment("1", "1", "01-28-2016", "afternoon", 1)
+        self.assertEqual(r[0], True)
     
 
 if __name__ == "__main__":
