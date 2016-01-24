@@ -54,14 +54,14 @@ def thingToDo(dictOfThings, date):
     TID = dictOfThings.keys()
     cleanData = {}
 
+    if not (dictOfThings and dictOfThings.keys() and dictOfThings[dictOfThings.keys()[0]].length > 3):
+        return ""
+    
     hour = 5
     minutes = 30
     if dictOfThings.values()[0][3] == 'afternoon':
         hour = 1
         minutes = 0
-
-    if not (dictOfThings and dictOfThings.keys() and dictOfThings[dictOfThings.keys()[0]].length > 3):
-        return ""
     stringer = "<form><table border='1'>\n"
     stringer += '<input type="hidden" name="time" value="%s">\n' % (dictOfThings.values()[0][3])
     stringer += '<input type="hidden" name="date" value="%s">\n' % (date)
