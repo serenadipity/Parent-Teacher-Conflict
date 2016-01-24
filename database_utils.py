@@ -92,8 +92,12 @@ def valid_teacher_login(username, password):
     pepper_and_salt = c.execute(q, (username,)).fetchone()
     conn.close()
     if not pepper_and_salt or sha512((password + pepper_and_salt[1]) * 10000).hexdigest() != pepper_and_salt[0]:
-        return False
-    return True
+        q = "SELECT teacher_id FROM teacher_database WHERE username = ?"
+        id = c.execute(q, (username,)).fetchone()
+        conn.close()
+        return id
+    conn.close()
+    return -1
 
 
 def valid_create_teacher(username, password, repeat_password, first_name, last_name, email, school, room):
