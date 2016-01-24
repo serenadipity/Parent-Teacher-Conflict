@@ -50,26 +50,26 @@ def createSchedule(listOfThings):
     return stringer
 
 
-def thingToDo(dictOfThings, date):
+def thingToDo(dictOfThings, date, time):
     TID = dictOfThings.keys()
     cleanData = {}
 
-    if not (dictOfThings and dictOfThings.keys() and len(dictOfThings.values()[0]) > 3):
+    if not (dictOfThings and dictOfThings.keys()):
         return ""
     
     hour = 5
     minutes = 30
-    if dictOfThings.values()[0][3] == 'afternoon':
+    if time == 'afternoon':
         hour = 1
         minutes = 0
     stringer = "<form><table border='1'>\n"
-    stringer += '<input type="hidden" name="time" value="%s">\n' % (dictOfThings.values()[0][3])
+    stringer += '<input type="hidden" name="time" value="%s">\n' % (time)
     stringer += '<input type="hidden" name="date" value="%s">\n' % (date)
     stringer += "<tr> <th> TIME </th> <th> N/A </th>"
     for key in TID:
         stringer += "<th> %s %s </th>" % (dictOfThings[key][0], dictOfThings[key][1])
         stuffToWorkWith = {}
-        for alist in dictOfThings[key][2:]:
+        for alist in dictOfThings[key][3:]:
             stuffToWorkWith[alist[2]] = alist[3:]
         cleanData[key] = stuffToWorkWith
     stringer += "</tr>"

@@ -121,10 +121,11 @@ def findAppointments():
     if request.method == 'POST' and 'type' in session and session['type'] == "parent" and 'id' in session:
         teachers = request.form['teachers']
         date = session['date']
+        time = database_utils.get_time(date)
         teacherschedules = {}
         for teacher in teachers:
-            teacherschedules[teacher] = database_utils.get_teacher_name(teacher) +  database_utils.get_teacher_appointments(teacher, date)
-        tablestring = utils.thingToDo(teacherschedules, date)
+            teacherschedules[teacher] = database_utils.get_teacher_name(teacher) + database_utils.get_teacher_appointments(teacher, date)
+        tablestring = utils.thingToDo(teacherschedules, date, time)
         session['step'] = 2
         step = session['step']
         return render_template("parentselect.html", title = "Choose Your Appointment Time",  step = step, appointments=tablestring)
