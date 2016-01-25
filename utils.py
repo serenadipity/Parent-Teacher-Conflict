@@ -62,10 +62,10 @@ def thingToDo(dictOfThings, date, time):
     if time == 'afternoon':
         hour = 1
         minutes = 0
-    stringer = "<form><table border='1'>\n"
+    stringer = "<form><table id='inner'>\n"
     stringer += '<input type="hidden" name="time" value="%s">\n' % (time)
     stringer += '<input type="hidden" name="date" value="%s">\n' % (date)
-    stringer += "<tr> <th> TIME </th> <th> N/A </th>"
+    stringer += "<tr> <th id='inner_row'> TIME </th> <th id='inner_row'> N/A </th>"
     for key in TID:
         stringer += "<th> %s %s </th>" % (dictOfThings[key][0], dictOfThings[key][1])
         stuffToWorkWith = {}
@@ -79,13 +79,13 @@ def thingToDo(dictOfThings, date, time):
         b = (hour + (minutes + counter * 3) / 60) % 10
         c = (minutes + counter * 3) % 60 / 10
         d = (minutes + counter * 3) % 60 % 10
-        stringer += "<td> %d%d:%d%d </td>" % (a, b, c, d)
-        addition = "<td> <input type='radio' name='%s' value='-1' checked> </td>" % (counter)
+        stringer += "<td id='inner_row'> %d%d:%d%d </td>" % (a, b, c, d)
+        addition = "<td id='inner_row'> <input type='radio' name='%s' value='-1' checked> </td>" % (counter)
         for key in TID:
             if counter in cleanData[key].keys():
-                addition += "<td> %s %s </td>" % (cleanData[key][counter][0], cleanData[key][counter][0])
+                addition += "<td id-'inner_row'> %s %s </td>" % (cleanData[key][counter][0], cleanData[key][counter][0])
             else:
-                addition += "<td><input type='radio' name='%s' value='%s'></td>" % (counter, key)
+                addition += "<td id='inner_row'><input type='radio' name='%s' value='%s'></td>" % (counter, key)
         stringer += addition + "</tr>\n"
     stringer += "</table> <input type='submit' value='Schedule'> </form>"
     return stringer
