@@ -97,7 +97,7 @@ def parentselect():
         session['step'] = 0
         step = session['step']
         school_list = database_utils.get_schools()
-        return render_template("parentselect.html", title = "Find Your Teacher", step = step, schools=school_list)
+        return render_template("parentselect.html", view = False, title = "Find Your Teacher", step = step, schools=school_list)
     else:
         return redirect("error")
 
@@ -111,7 +111,7 @@ def findTeachers():
         session['step'] = 1
         step = session['step']
         session['date'] = date
-        return render_template("parentselect.html", title = "Choose Your Teacher", step = step, teachers=availableTeachers)
+        return render_template("parentselect.html", view = False, title = "Choose Your Teacher", step = step, teachers=availableTeachers)
     else:
         return redirect("error")
 
@@ -128,7 +128,7 @@ def findAppointments():
         tablestring = utils.thingToDo(teacherschedules, date, time)
         session['step'] = 2
         step = session['step']
-        return render_template("parentselect.html", title = "Choose Your Appointment Time",  step = step, appointments=tablestring)
+        return render_template("parentselect.html", view = False, title = "Choose Your Appointment Time",  step = step, appointments=tablestring)
     else:
         return redirect("error")
 
@@ -156,13 +156,13 @@ def parentschedule():
             date = request.form['date']
             appointments = database_utils.get_parent_appointments(parent_id, date)
             tablestring = utils.createSchedule(appointments)
-            return render_template("parentschedule.html", appointment=tablestring)
+            return render_template("parentselect.html", view = True, appointment=tablestring)
         elif 'date' in session:
             date = session['date']
             PID = session['id']
             appointments = database_utils.get_parent_appointments(PID, date)
             tablestring = utils.createSchedule(appointments)
-            return render_template("parentschedule.html", Appointment=tablestring)
+            return render_template("parentselect.html", view = True, appointment=tablestring)
         else:
             return redirect("error")
     else:
@@ -177,6 +177,7 @@ def teacherschedule():
             date = request.form['date']
             appointments = database_utils.get_teacher_appointments(teacher_id, date)
             tablestring = utils.createSchedule(appointments)
+            print tablestring
             return render_template("teacherschedule.html", appointment=tablestring)
         else:
             # do stuff with session['id']

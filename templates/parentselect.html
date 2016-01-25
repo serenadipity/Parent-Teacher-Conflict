@@ -28,20 +28,17 @@
     <tr>
       <td class="bg1" id="outer_bg1" style="font-family:chalktwo; color:white;">
         <h3><u> Parent Information </u></h3>
-        <p id="teacherinfo">
-          Info: info
-          <br>
-          Info: info
-          <br>
-          Info: info
-        </p>
+        <form method="POST" action="parentschedule">
+	    <input type="date" name="date" id="black" min="2016/01/01" max="2020/12/31" placeholder="YYYY/MM/DD">
+	    <input id="black" type="submit" value="View">
+	</form>
       </td>
 
 
       <td rowspan="2" class="bg2" id="outer_bg1" style="font-family:chalktwo; color:white;">
         <div class="form-group">
           <h3><u>{{title}}</u></h3>
-
+	  {% if view == False %}
           {% if step == 0 %}
 	  <p> Choose a Date and School</p>
           <form role="form" id="black" method="POST" action="findTeachers">
@@ -49,7 +46,7 @@
 	      <input type="date" name="date" id="black" min="2016/01/01" max="2020/12/31" placeholder="YYYY/MM/DD">
 	    </div>
 	    <div class="form-group">
-	      <select id="school" name="school" tabindex="5"required>
+	      <select id="school" name="school" tabindex="5" required>
 		<option value="Select School" selected disabled>Select School</option>
 		{% for school in schools %}
 	      <option value={{school}}>{{school}}</option>
@@ -76,119 +73,18 @@
 	    {{appointments | safe }}
 	  </form>
 	  {% endif %}
+	  {% endif %}
+	  {% if view %}
+	  <h3> Here are your Appointments </h3>
+	  {{appointment | safe }}
+	  {% endif %}
 	</div>
       </td>
-
-
-<!--
-          session['step'] == 0
-<form method="POST" action="findTeachers">
-  <input type="date" name="date" id="black" min="2016/01/01" max="2020/12/31" placeholder="YYYY/MM/DD">
-  <select class="form-control input-lg" id="school" name="school" tabindex="5"required>
-    <option value="Select School" selected disabled>Select School</option>
-       {% for school in schools %}
-       <option value={{school}}>{{school}}</option>
-       {% endfor %}
-  </select>
-  <input type="submit" value="Find Teachers">
-</form>
-
-session['step'] == 1
-<form method="POST" action="findAppointments">
-  {% for teacher in teachers %}
-  <input type="checkbox" name="teachers" value={{teacher}}>{{teacher}}<br>
-  {% endfor %}
-  <input type="submit" value="Submit">
-</form>
-
-session['step'] == 2
-<form method="POST" action="scheduleAppointments">
-  {{appointments}}
-</form>
-
-
--->
-
-<!--
-            <form>
-  <table>
-    <tr>
-      <th>Emptiness</th>
-      <th> Time Slot </th>
-      <th> Parent Name </th>
-      <th> Student Name </th>
     </tr>
-    <tr id="row1">
-      <td> <input type="checkbox" name="reserve" value="slot 1"> </td>
-      <td> Time 1 </td>
-      <td>Not unsigned</td>
-      <td>Not unsigned</td>
-    </tr>
-    <tr id="row2">
-      <td>Can't reserve since parent signed up already</td>
-      <td> Time 2 </td>
-      <td> Parent 1 </td>
-      <td> Student 1 </td>
-    </tr>
-  </table>
-
-  <input type="submit" value="Submit">
-  </form>
-
--->
-        </div>
-      </td>
-    </tr>
-
   </table>
 </center>
 </div>
-
-
-<!--
-<div>
-  <p> Parent Info </p>
-</div>
-
-<div>
-  <form>
-    Child Name: <input type="text" name="childname"> <input type="submit" value="Add">
-  </form>
-  <form>
-    Teacher Name: <select>
-      <option value="teacherid"> teacher name </option>
-      <input type="submit" value="Add">
-  </form>
-</div>
-
-<div>
-  <form>
-  <table>
-    <tr>
-      <th> Time Slot </th>
-      <th> Parent Name </th>
-      <th> Student Name </th>
-    </tr>
-    <tr id="row1">
-      <td> <input type="checkbox" name="reserve" value="slot 1"> </td>
-      <td> Time 1 </td>
-      <td> <!-- Not unsigned --> <!--</td>
-      <td> <!-- Not unsigned --> <!--</td>
-    </tr>
-    <tr id="row2">
-      <td> <!-- Can't reserve since parent signed up already --> <!--</td>
-      <td> Time 2 </td>
-      <td> Parent 1 </td>
-      <td> Student 1 </td>
-    </tr>
-  </table>
-
-  <input type="submit" value="Submit">
-  </form>
-  
-</div>
-
--->
+</body>
 
 {% endblock %}
 

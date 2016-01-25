@@ -32,18 +32,18 @@ def createSchedule(listOfThings):
     for alist in listOfThings:
         stuffToWorkWith[alist[2]] = alist[3:]
     stringer = ""
-    stringer += "<table>\n"
-    stringer += "<tr> <th> TIME </th> <th colspan='2'> Name </th> </tr>\n"
+    stringer += "<table id='inner'>\n"
+    stringer += "<tr> <th id='inner_row'> TIME </th> <th id='inner_row'> Name </th> </tr>\n"
     for counter in range(50):
         stringer += "<tr>"
         a = (hour + (minutes + counter * 3) / 60) / 10
         b = (hour + (minutes + counter * 3) / 60) % 10
         c = (minutes + counter * 3) % 60 / 10
         d = (minutes + counter * 3) % 60 % 10
-        stringer += "<td> %d%d:%d%d </td>" % (a, b, c, d)
-        addition = "<td></td><td></td>"
+        stringer += "<td id='inner_row'> %d%d:%d%d </td>" % (a, b, c, d)
+        addition = "<td id='inner_row'></td>"
         if counter in stuffToWorkWith.keys():
-            addition = "<td> %s </td><td> %s </td>" % (stuffToWorkWith[counter][0], stuffToWorkWith[counter][1])
+            addition = "<td id='inner_row'> %s %s </td>" % (stuffToWorkWith[counter][0], stuffToWorkWith[counter][1])
         stringer += addition
         stringer += "</tr>\n"
     stringer += "</table\n"
