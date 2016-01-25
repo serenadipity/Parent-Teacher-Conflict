@@ -180,7 +180,6 @@ def teacherschedule():
             print tablestring
             return render_template("teacherschedule.html", appointment=tablestring)
         else:
-            # do stuff with session['id']
             return render_template("teacherschedule.html")
     else:
         return redirect("error")
