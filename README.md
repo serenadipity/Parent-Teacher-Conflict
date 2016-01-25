@@ -35,6 +35,6 @@ Build & Run
   Have all the files in  your folder.
   
 ###To Run
-  
+  //Type the following in your terminal:
   python app.py
 
