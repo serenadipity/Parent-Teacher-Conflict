@@ -155,13 +155,13 @@ def parentschedule():
             parent_id = session['id']
             date = request.form['date']
             appointments = database_utils.get_parent_appointments(parent_id, date)
-            tablestring = utils.createSchedule(appointments)
+            tablestring = utils.createSchedule(appointments, parent = True)
             return render_template("parentselect.html", view = True, title = "Here are Your Appointments", appointment=tablestring)
         elif 'date' in session:
             date = session['date']
             PID = session['id']
             appointments = database_utils.get_parent_appointments(PID, date)
-            tablestring = utils.createSchedule(appointments)
+            tablestring = utils.createSchedule(appointments, parent = True)
             return render_template("parentselect.html", view = True,  title = "Here are Your Appointments", appointment=tablestring)
         else:
             return redirect("error")
@@ -176,7 +176,7 @@ def teacherschedule():
             teacher_id = session['id']
             date = request.form['date']
             appointments = database_utils.get_teacher_appointments(teacher_id, date)
-            tablestring = utils.createSchedule(appointments)
+            tablestring = utils.createSchedule(appointments, parent = False)
             print tablestring
             return render_template("teacherschedule.html", appointment=tablestring)
         else:
