@@ -52,7 +52,7 @@
 	      </select>
 	    </div>
 	    <div>
-	      <input type="submit" value="Submit"></input>
+	      <input id="black"type="submit" value="Submit"></input>
 	    </div>
 	  </form>
 	  {% endif %}
@@ -62,7 +62,7 @@
 	    {% for teacher in teachers %}
 	    <input type="checkbox" name="teachers" value={{teacher[0]}}>{{teacher[1]}} {{teacher[2]}}<br>
 	    {% endfor %}
-	    <input type="submit" value="Submit">
+	    <input id="black" type="submit" value="Submit">
 	  </form>
 	  {% endif %}
 	      
