@@ -87,6 +87,6 @@ def thingToDo(dictOfThings, date, time):
             else:
                 addition += "<td id='inner_row'><input type='radio' name='%s' value='%s'></td>" % (counter, key)
         stringer += addition + "</tr>\n"
-    stringer += "</table> <input type='submit' value='Schedule'> </form>"
+    stringer += "</table> <input id='black' type='submit' value='Schedule'> </form>"
     return stringer
 
