@@ -106,7 +106,7 @@ th, td {
     padding: 20px;
     overflow-y:scroll;
     overflow-x:scroll;
-    float: right;
+    float: center;
 }
 
 #inner_row {
