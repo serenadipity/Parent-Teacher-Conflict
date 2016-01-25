@@ -20,7 +20,7 @@ def valid_data(username, password, repeat_password, email, users):
 
 
 #[[PID, TIME, SECTION #, F, L]]
-def createSchedule(listOfThings, parent):
+def createSchedule(listOfThings):
     if not(listOfThings and listOfThings[0]):
         return ""
     hour = 5
@@ -43,10 +43,7 @@ def createSchedule(listOfThings, parent):
         stringer += "<td id='inner_row'> %d%d:%d%d </td>" % (a, b, c, d)
         addition = "<td id='inner_row'></td>"
         if counter in stuffToWorkWith.keys():
-            if not parent:
-                addition = "<td id='inner_row'> %s %s </td>" % (stuffToWorkWith[counter][0], stuffToWorkWith[counter][1])
-            elif parent:
-                addition = "<td id='inner_row'> Slot Taken </td>"
+            addition = "<td id='inner_row'> %s %s </td>" % (stuffToWorkWith[counter][0], stuffToWorkWith[counter][1])
         stringer += addition
         stringer += "</tr>\n"
     stringer += "</table\n"
