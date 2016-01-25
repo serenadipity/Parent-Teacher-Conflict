@@ -17,7 +17,7 @@ Members
 Sections
 --------
 ###Teacher
-  Teachers can sign up to create an account and login. There, teachers are able to specify what time they are free to have an appointment with a parent.
+  Teachers can sign up to create an account and login. There, teachers are able to specify what time they are free to have an appointment with a parent. Teachers are able to view all their appointments of one single day. 
 
 ###Parent
   Parent can similarily sign up to create an account and login. There, parents can search for a the teachers based on the school that they are from. They may also view all their appointments of that single day.
