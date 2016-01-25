@@ -261,7 +261,6 @@ def get_teacher_appointments(TID, date):
     appointments = c.execute(q, (TID,date))
     list_appoint = []
     for x in appointments:
-        print x
         temp = []
         for z in x:
             temp.append(z)
@@ -270,11 +269,11 @@ def get_teacher_appointments(TID, date):
         PID = entry[0]
         q = 'SELECT first_name, last_name FROM parent_database WHERE PARENT_ID = ?'
         extra = c.execute(q, (PID,)).fetchone()
-        print extra
         extra1 = []
-        for x in extra:
-            extra1.append(x)
-        entry.extend(extra1)
+        if extra:
+            for x in extra:
+                extra1.append(x)
+            entry.extend(extra1)
     conn.close()
     return list_appoint
 
@@ -291,7 +290,6 @@ def get_parent_appointments(PID, date):
     appointments = c.execute(q, (PID,date))
     list_appoint = []
     for x in appointments:
-        print x
         temp = []
         for z in x:
             temp.append(z)
@@ -300,11 +298,11 @@ def get_parent_appointments(PID, date):
         TID = entry[0]
         q = 'SELECT first_name, last_name FROM teacher_database WHERE TEACHER_ID = ?'
         extra = c.execute(q, (TID,)).fetchone()
-        print extra
         extra1 = []
-        for x in extra:
-            extra1.append(x)
-        entry.extend(extra1)
+        if extra:
+            for x in extra:
+                extra1.append(x)
+            entry.extend(extra1)
     conn.close()
     return list_appoint
 
