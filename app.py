@@ -119,7 +119,8 @@ def findTeachers():
 @app.route("/findAppointments", methods=['POST'])
 def findAppointments():
     if request.method == 'POST' and 'type' in session and session['type'] == "parent" and 'id' in session:
-        teachers = request.form['teachers']
+        teachers = request.form.getlist('teachers')
+        print teachers
         date = session['date']
         time = database_utils.get_time(date)
         teacherschedules = {}
