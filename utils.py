@@ -83,7 +83,7 @@ def thingToDo(dictOfThings, date, time):
         addition = "<td id='inner_row'> <input type='radio' name='%s' value='-1' checked> </td>" % (counter)
         for key in TID:
             if counter in cleanData[key].keys():
-                addition += "<td id-'inner_row'> %s %s </td>" % (cleanData[key][counter][0], cleanData[key][counter][0])
+                addition += "<td id='inner_row'> %s %s </td>" % (cleanData[key][counter][0], cleanData[key][counter][0])
             else:
                 addition += "<td id='inner_row'><input type='radio' name='%s' value='%s'></td>" % (counter, key)
         stringer += addition + "</tr>\n"
