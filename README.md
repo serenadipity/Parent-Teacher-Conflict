@@ -36,7 +36,7 @@ Build & Run
   
 ###To Run
 
-   //Type the following in your terminal:
+   Type the following in your terminal:
    
    python app.py
 
