@@ -299,7 +299,7 @@ def get_parent_appointments(PID, date):
     for entry in list_appoint:
         TID = entry[0]
         q = 'SELECT first_name, last_name FROM teacher_database WHERE TEACHER_ID = ?'
-        extra = c.execute(q, (TID,))
+        extra = c.execute(q, (TID,)).fetchone()
         print extra
         extra1 = []
         for x in extra:
