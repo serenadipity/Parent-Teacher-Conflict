@@ -67,7 +67,7 @@ def thingToDo(dictOfThings, date, time):
     stringer += '<input type="hidden" name="date" value="%s">\n' % (date)
     stringer += "<tr> <th id='inner_row'> TIME </th> <th id='inner_row'> N/A </th>"
     for key in TID:
-        stringer += "<th> %s %s </th>" % (dictOfThings[key][0], dictOfThings[key][1])
+        stringer += "<th id='inner_row'> %s %s </th>" % (dictOfThings[key][0], dictOfThings[key][1])
         stuffToWorkWith = {}
         for alist in dictOfThings[key][3:]:
             stuffToWorkWith[alist[2]] = alist[3:]
