@@ -1,5 +1,9 @@
 # Parent-Teacher-Conflict
 
+Link
+----
+http://162.243.19.145:8000/
+
 Members 
 -------
 | Name           | Position  |                     GitHub                      |
@@ -13,47 +17,24 @@ Members
 Sections
 --------
 ###Teacher
-- sign up and say what days they are doing
-- time intervals
-- breaks
-- set a pin for verification of volunteer
-- get a list of volunteers
-- show stats
+  Teachers can sign up to create an account and login. There, teachers are able to specify what time they are free to have an appointment with a parent.
 
 ###Parent
-- create account
-- enter student's teacher name??
-- table will show up with available times for each teacher
-- get updated if there are delays
-- timeline of your stuff
-
-###Volunteer 
-- select a teacher and enter pin
-- the teacher's schedule
-- set as delay
-
-###Backend 
-- text parents
-- email parents
-- teacher stats update
-
+  Parent can similarily sign up to create an account and login. There, parents can search for a the teachers based on the school that they are from. They may also view all their appointments of that single day.
+  
 Things We're Using
 ------------------
 ###We Know
 - Flask
-- JS live updates
 - Databases
+- JS Front-End Updates
 
-
-###We Don't Know But Will Learn
-- text messaging
-- emailing
-
-###We Don't Know
-- None yet
-
-Changelog
----------
-| Timestamp  | Contributor  | Description |
-|:-----------|:------------:|:------------|
+Build & Run
+-----------
+###To Build
+  Have all the files in  your folder.
+  
+###To Run
+  
+  python app.py
 
