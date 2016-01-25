@@ -156,13 +156,13 @@ def parentschedule():
             date = request.form['date']
             appointments = database_utils.get_parent_appointments(parent_id, date)
             tablestring = utils.createSchedule(appointments)
-            return render_template("parentselect.html", view = True, appointment=tablestring)
+            return render_template("parentselect.html", view = True, title = "Here are Your Appointments", appointment=tablestring)
         elif 'date' in session:
             date = session['date']
             PID = session['id']
             appointments = database_utils.get_parent_appointments(PID, date)
             tablestring = utils.createSchedule(appointments)
-            return render_template("parentselect.html", view = True, appointment=tablestring)
+            return render_template("parentselect.html", view = True,  title = "Here are Your Appointments", appointment=tablestring)
         else:
             return redirect("error")
     else:

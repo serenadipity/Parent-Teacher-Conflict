@@ -23,14 +23,16 @@
   <table id="outer">
     <tr>
       <td class="bg1" id="outer_bg1" style="font-family:chalktwo; color:white;">
-        <h3><u> Parent Information </u></h3>
+        <h3><u> Welcome Parent! </u></h3>
+	<p> Choose a Date to View Your Appointments: </p>
         <form method="POST" action="parentschedule">
 	    <input type="date" name="date" id="black" min="2016/01/01" max="2020/12/31" placeholder="YYYY/MM/DD">
 	    <input id="black" type="submit" value="View">
 	</form>
+	{% if view %}
+	<a class="btn btn-success" href="/parentselect">Click Here to Add an Appointment</a>
+	{% endif %}
       </td>
-
-
       <td rowspan="2" class="bg2" id="outer_bg1" style="font-family:chalktwo; color:white;">
         <div class="form-group">
           <h3><u>{{title}}</u></h3>
@@ -70,8 +72,8 @@
 	  </form>
 	  {% endif %}
 	  {% endif %}
+	  
 	  {% if view %}
-	  <h3> Here are your Appointments </h3>
 	  {{appointment | safe }}
 	  {% endif %}
 	</div>
