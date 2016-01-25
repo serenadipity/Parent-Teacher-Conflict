@@ -102,6 +102,7 @@ th, td {
     border: 1px solid transparent;
     display:block;
     height: 300px;
+    width: 30px;
     padding: 20px;
     overflow-y:scroll;
     overflow-x:scroll;
