@@ -20,6 +20,10 @@ database_utils.valid_create_parent('OneidaDrews', 'ABCabc1!', 'ABCabc1!', 'Oneid
 database_utils.valid_create_parent('KathieKorando', 'ABCabc1!', 'ABCabc1!', 'Kathie', 'Korando', 'KathieKorando@gmail.com')
 database_utils.valid_create_parent('MoseEilerman', 'ABCabc1!', 'ABCabc1!', 'Mose', 'Eilerman', 'MoseEilerman@gmail.com')
 database_utils.valid_create_teacher('JCocoros', 'ABCabc1!', 'ABCabc1!', 'Jim', 'Cocoros', 'JCocoros@stuy.edu', 'Stuyvesant', '407')
+database_utils.valid_create_teacher('AJaishankar', 'ABCabc1!', 'ABCabc1!', 'Ashvin', 'Jaishankar', 'AJaishankar@stuy.edu', 'Stuyvesant', '427')
+database_utils.valid_create_teacher('MZamansky', 'ABCabc1!', 'ABCabc1!', 'Mike', 'Zamansky', 'MZamansky@stuy.edu', 'Stuyvesant', '307')
+database_utils.valid_create_teacher('OPascu', 'ABCabc1!', 'ABCabc1!', 'Oana', 'Pascu', 'OPascu@stuy.edu', 'Stuyvesant', '431')
+
 database_utils.set_teacher_availability(1, '2016-01-28', 'evening')
 database_utils.make_appointment(1, 1, '2016-01-28', 'evening', 3)
 database_utils.make_appointment(2, 1, '2016-01-28', 'evening', 6)
