@@ -1,5 +1,7 @@
 # Parent-Teacher-Conflict
 
+An optimized scheduling system for parent teacher conferences at Stuyvesant High School.
+
 Link
 ----
 http://ptconflict.com
