@@ -22,25 +22,25 @@ Members
 
 Sections
 --------
-###Teacher
+### Teacher
   Teachers can sign up to create an account and login. There, teachers are able to specify what time they are free to have an appointment with a parent. Teachers are able to view all their appointments of one single day. 
 
-###Parent
+### Parent
   Parent can similarily sign up to create an account and login. There, parents can search for a the teachers based on the school that they are from. They may also view all their appointments of that single day.
   
 Things We're Using
 ------------------
-###We Know
+### We Know
 - Flask
 - Databases
 - JS Front-End Updates
 
 Build & Run
 -----------
-###To Build
+### To Build
   Have all the files in  your folder.
   
-###To Run
+### To Run
 
    Type the following in your terminal:
    
